@@ -6,13 +6,40 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>signup</ion-title>
-  </ion-navbar>
+    <ion-navbar>
+        <ion-title>Sign Up</ion-title>
+    </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
-<p>THis is the signup form</p>
+<ion-content class="background">
+    <ion-list>
+        <ion-item>
+            <ion-input type="text" placeholder="Username"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-input type="text" placeholder="Password"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-input type="text" placeholder="Email Address"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-input type="text" placeholder="Cell Phone Number"></ion-input>
+        </ion-item>
+        <h5><strong>Address</strong></h5>
+        <ion-item>
+            <ion-input type="text" placeholder="Street"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-input type="text" placeholder="City"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-input type="text" placeholder="State"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-input type="text" placeholder="Zipcode"></ion-input>
+        </ion-item>
+    </ion-list>
+    <button ion-button round color="secondary" (click)="login()"> Sign Up</button>
 </ion-content>
