@@ -26,5 +26,11 @@ export class DonatorPage {
     this.navCtrl.push(DonateThankYouPage);
   }
 
+name: String = "Test marker";
+organization: String = "Test marker";
+phone: String = "Test marker";
+email: String = "Test marker";
+donation: String = "Test marker";
+
 
 }

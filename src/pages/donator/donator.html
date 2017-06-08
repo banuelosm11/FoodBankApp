@@ -20,27 +20,27 @@
 
   <ion-item>
     <ion-label color="secondary">Name</ion-label>
-    <ion-input ></ion-input>
+    <ion-input (ngModel)="name"></ion-input>
   </ion-item>
 
    <ion-item>
     <ion-label color="secondary">Organization</ion-label>
-    <ion-input ></ion-input>
+    <ion-input (ngModel)="organization" ></ion-input>
   </ion-item>
 
   <ion-item>
     <ion-label color="secondary" fixed>Phone</ion-label>
-    <ion-input type="tel" ></ion-input>
+    <ion-input type="tel" (ngModel)="phone" ></ion-input>
   </ion-item>
 
   <ion-item>
     <ion-label color="secondary" fixed>Email</ion-label>
-    <ion-input type="email" ></ion-input>
+    <ion-input type="email" (ngModel)="email" ></ion-input>
   </ion-item>
 
   <ion-item>
     <ion-label color="secondary" stacked>Donation Description</ion-label>
-    <ion-textarea placeholder="ex. 2 boxes of corn, 3 trays of fruit"></ion-textarea>
+    <ion-textarea placeholder="ex. 2 boxes of corn, 3 trays of fruit" (ngModel)="donation"></ion-textarea>
   </ion-item>
 
 </ion-list>
