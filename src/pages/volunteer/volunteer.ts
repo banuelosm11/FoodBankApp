@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 declare var window:any;
+
+import {DestinationPage} from '../pages';
 /**
  * Generated class for the VolunteerPage page.
  *
@@ -19,6 +21,10 @@ export class VolunteerPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad VolunteerPage');
+  }
+
+  goToDestination(){
+    this.navCtrl.push(DestinationPage);
   }
 
   

@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import{Donation} from './donation';
 
+import {DonateThankYouPage} from '../pages';
 /**
  * Generated class for the DonatorPage page.
  *
@@ -14,11 +16,27 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class DonatorPage {
 
+name: String;
+organization: String;
+phone: String;
+email: String;
+donation: String;
+
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad DonatorPage');
   }
+
+  submit(){
+    this.navCtrl.push(DonateThankYouPage);
+  }
+
+  createDonation(){
+
+  }
+
 
 }
