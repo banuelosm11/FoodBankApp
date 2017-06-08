@@ -1,30 +1,24 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
-import {DonateThankYouPage} from '../pages';
 /**
- * Generated class for the DonatorPage page.
+ * Generated class for the DonateThankYouPage page.
  *
  * See http://ionicframework.com/docs/components/#navigation for more info
  * on Ionic pages and navigation.
  */
 @IonicPage()
 @Component({
-  selector: 'page-donator',
-  templateUrl: 'donator.html',
+  selector: 'page-donate-thank-you',
+  templateUrl: 'donate-thank-you.html',
 })
-export class DonatorPage {
+export class DonateThankYouPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad DonatorPage');
+    console.log('ionViewDidLoad DonateThankYouPage');
   }
-
-  submit(){
-    this.navCtrl.push(DonateThankYouPage);
-  }
-
 
 }

@@ -7,12 +7,44 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>donator</ion-title>
+    <ion-title>Donation Form</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-<p> Donator Page </p>
+<p>Please enter your donation information below. </p>
+
+<ion-list>
+
+  <ion-item>
+    <ion-label color="secondary">Name</ion-label>
+    <ion-input ></ion-input>
+  </ion-item>
+
+   <ion-item>
+    <ion-label color="secondary">Organization</ion-label>
+    <ion-input ></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label color="secondary" fixed>Phone</ion-label>
+    <ion-input type="tel" ></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label color="secondary" fixed>Email</ion-label>
+    <ion-input type="email" ></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label color="secondary" stacked>Donation Description</ion-label>
+    <ion-textarea placeholder="ex. 2 boxes of corn, 3 trays of fruit"></ion-textarea>
+  </ion-item>
+
+</ion-list>
+
+<button ion-button round full color="secondary" (click)="submit()">Submit</button>
+
 </ion-content>
