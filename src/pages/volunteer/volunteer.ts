@@ -22,8 +22,8 @@ export class VolunteerPage {
   }
 
   
-  lat: number = 51.678418;
-  lng: number = 7.809007;
+  lat: number = 39.7391;
+  lng: number = -75.5398;
   markerLabel: String = "Test marker";
 
 }
