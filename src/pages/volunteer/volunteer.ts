@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
+declare var window:any;
 /**
  * Generated class for the VolunteerPage page.
  *
@@ -21,8 +21,9 @@ export class VolunteerPage {
     console.log('ionViewDidLoad VolunteerPage');
   }
 
-  title: string = 'My first angular2-google-maps project';
+  
   lat: number = 51.678418;
   lng: number = 7.809007;
+  markerLabel: String = "Test marker";
 
 }
