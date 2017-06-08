@@ -7,6 +7,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { LandingPage, SignupPage, DonatorPage, VolThankYouPage, VolunteerPage } from '../pages/pages';
+import{AgmCoreModule} from 'angular2-google-maps/core';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,10 @@ import { LandingPage, SignupPage, DonatorPage, VolThankYouPage, VolunteerPage } 
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyD29YfpbLJoYiIinHsLksHN8FnH6UdOZ00'
+    })
   ],
   bootstrap: [IonicApp],
   entryComponents: [
