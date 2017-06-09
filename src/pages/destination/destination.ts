@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { DestinationService } from '../../app/services/destination.service'
 
@@ -15,14 +15,17 @@ import { DestinationService } from '../../app/services/destination.service'
   providers: [DestinationService]
 })
 export class DestinationPage {
-  // destinations:any;
+  // destinations: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private _destinationService: DestinationService) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad DestinationPage');
-    this._destinationService.getDestinations();
+    this._destinationService.getDestinations().subscribe(data => {
+				console.log(data);
+			}
+		);
   }
 
   // ngOnInit(){

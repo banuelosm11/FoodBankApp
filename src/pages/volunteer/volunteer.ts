@@ -30,6 +30,5 @@ export class VolunteerPage {
 
   lat: number = 39.7391;
   lng: number = -75.5398;
-  markerLabel: String = "Test marker";
 
 }
