@@ -8,7 +8,6 @@ import { DestinationService } from './services/destination.service';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { LandingPage, SignupPage, DonatorPage, VolThankYouPage, VolunteerPage, DonateThankYouPage, DestinationPage } from '../pages/pages';
-import { AgmCoreModule } from 'angular2-google-maps/core';
 import { HttpModule } from '@angular/http';
 
 @NgModule({
@@ -26,9 +25,6 @@ import { HttpModule } from '@angular/http';
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyD29YfpbLJoYiIinHsLksHN8FnH6UdOZ00'
-    }),
     HttpModule
   ],
   bootstrap: [IonicApp],
