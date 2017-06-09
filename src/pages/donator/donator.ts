@@ -20,7 +20,13 @@ name: String;
 organization: String;
 phone: String;
 email: String;
+address: String;
+city: String;
+state: String;
+zipCode: String;
 donation: String;
+donationList: Donation[] = [];
+
 
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
@@ -31,10 +37,14 @@ donation: String;
   }
 
   submit(){
+    this.createDonation();
     this.navCtrl.push(DonateThankYouPage);
   }
 
   createDonation(){
+
+    this.donationList.push(new Donation(this.name, this.organization, this.phone, this.email, this.address, 
+    this.city, this.state, this.zipCode, this.donation))
 
   }
 
