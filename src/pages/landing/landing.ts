@@ -40,10 +40,16 @@ export class LandingPage {
           buttons: [
             {
               text: 'Yes',
-              role: 'yes',
               handler: () => {
                 console.log('Cancel clicked');
                 this.navCtrl.setRoot(HomePage);
+                //remind user who has signed out
+                let confirmedAlert = this.alertCtrl.create({
+                 title: 'You have signed out.',
+                 subTitle: '',
+                 buttons: ['OK']
+                 });
+                 confirmedAlert.present();
               }
             },
             {
@@ -55,7 +61,6 @@ export class LandingPage {
           ]
         });
         alert.present();
-
 
   }
 

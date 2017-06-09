@@ -31,7 +31,7 @@ export class HomePage {
           alert.present();
         }
         //should connect to server or local jason
-        else if (this.email === '1111' && this.password === '0000') {
+        else if (this.email === 'whereisthefood' && this.password === '0000') {
                   this.navCtrl.setRoot(LandingPage);
         }
         else {
@@ -48,7 +48,9 @@ export class HomePage {
   }
 
   doRegister(){
-      this.navCtrl.setRoot(SignupPage);
+      this.navCtrl.push(SignupPage);
   }
+
+
 
 }
