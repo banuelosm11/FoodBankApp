@@ -1,0 +1,26 @@
+[{
+        "locationName": "Acme at Trolley",
+        "lat": 39.757203,
+        "lng": -75.563795
+    },
+    {
+        "locationName": "Acme at Concord",
+        "lat": 39.787750,
+        "lng": -75.545099
+    },
+    {
+        "locationName": "Kid Shelleen's Charcoal House & Saloon",
+        "lat": 39.757418,
+        "lng": -75.565246
+    },
+    {
+        "locationName": "Domaine Hudson",
+        "lat": 39.750210,
+        "lng": -75.549418
+    },
+    {
+        "locationName": "Save-A-Lot",
+        "lat": 39.743895,
+        "lng": -75.568695
+    }
+]
