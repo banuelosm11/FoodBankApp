@@ -7,6 +7,13 @@
 <ion-header>
 
   <ion-navbar>
+
+      <ion-buttons End>
+        <button (click)="logOut()" ion-button icon-only>
+          <ion-icon name="ios-log-out" md="md-log-out"></ion-icon>
+        </button>
+      </ion-buttons>
+
     <ion-title>landing</ion-title>
   </ion-navbar>
 
@@ -14,7 +21,7 @@
 
 
 <ion-content padding>
-<p>THis is the landing form</p>
+<p>landing page</p>
 
   <button ion-button round full color="secondary" (click)="goToVolunteer()">Volunteer</button>
   <button ion-button round full color="secondary" (click)="goToDonator()">Donate</button>
