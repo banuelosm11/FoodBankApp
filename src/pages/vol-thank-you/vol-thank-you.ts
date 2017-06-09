@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, AlertController, NavParams } from 'ionic-angular';
-import {LandingPage, DonatorPage, HomePage} from '../pages';
+import {LandingPage, DonatorPage, HomePage, VolunteerPage} from '../pages';
+
 
 /**
  * Generated class for the VolThankYouPage page.
@@ -52,6 +53,12 @@ export class VolThankYouPage {
         alert.present();
   }
 
+  volunteerAgain(){
+    this.navCtrl.push(VolunteerPage);
+  }
 
+  goToLanding(){
+    this.navCtrl.push(LandingPage);
+  }
 
 }

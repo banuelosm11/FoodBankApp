@@ -28,7 +28,7 @@ city: String;
 state: String;
 zipCode: String;
 donationDescription: String;
-donation: any;
+donation: Donation;
 
 
 
