@@ -1,0 +1,31 @@
+[
+    {
+        "locationName":"Choice Pantry",
+        "lat":39.764780,
+        "lng":-75.540354
+    },
+
+    {
+        "locationName":"Rose Hill Community Center",
+        "lat":39.704324,
+        "lng":-75.548040
+    },
+
+    {
+        "locationName":"Marshallton UMC Food Closet",
+        "lat":39.726635,
+        "lng":-75.638457
+    },
+
+    {
+        "locationName":"Cedars Church of Christ Pantry",
+        "lat":39.739935,
+        "lng":-75.634429
+    },
+
+    {
+        "locationName":"SALVATION ARMY FOOD CLOSET",
+        "lat":39.741180,
+        "lng":-75.552092
+    }
+]

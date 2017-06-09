@@ -6,7 +6,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-import { LandingPage, SignupPage, DonatorPage, VolThankYouPage, VolunteerPage } from '../pages/pages';
+import { LandingPage, SignupPage, DonatorPage, VolThankYouPage, VolunteerPage, DonateThankYouPage, DestinationPage } from '../pages/pages';
 import{AgmCoreModule} from 'angular2-google-maps/core';
 
 @NgModule({
@@ -17,7 +17,9 @@ import{AgmCoreModule} from 'angular2-google-maps/core';
     LandingPage,
     VolThankYouPage,
     VolunteerPage,
-    DonatorPage
+    DonatorPage,
+    DonateThankYouPage,
+    DestinationPage
   ],
   imports: [
     BrowserModule,
@@ -34,7 +36,9 @@ import{AgmCoreModule} from 'angular2-google-maps/core';
     LandingPage,
     VolThankYouPage,
     VolunteerPage,
-    DonatorPage
+    DonatorPage,
+    DonateThankYouPage,
+    DestinationPage
   ],
   providers: [
     StatusBar,
