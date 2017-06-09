@@ -11,17 +11,17 @@ const URL_HUNGERRELIEFLOCATIONS = '../../assets/data/hungerReliefLocations.json'
 export class DestinationService {
 	constructor(private _http: Http) {}
 
+	// getDestinations() {
+	// 	return this._http.get(URL_HUNGERRELIEFLOCATIONS)
+	// 		.map((response:Response) => response.json())
+	// 		.toPromise();
+	// }
+
 	getDestinations() {
 		return this._http.get(URL_HUNGERRELIEFLOCATIONS)
 			.map((response:Response) => response.json())
-			.toPromise();
+			.catch(this._handlerError);
 	}
-
-	// getCustomers_RxObservable() {
-	// 	return this._http.get(URL_HUNGERRELIEFLOCATIONS)
-	// 		.map((response:Response) => response.json())
-	// 		.catch(this._handlerError);
-	// }
 
 	_handlerError(err: any, caught: Observable<any>){
 		console.log(err);	//log this somewhere and format the message well for devs

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 declare var window:any;
 
-import {DestinationPage} from '../pages';
+import { DestinationPage } from '../pages';
 /**
  * Generated class for the VolunteerPage page.
  *
@@ -23,11 +23,11 @@ export class VolunteerPage {
     console.log('ionViewDidLoad VolunteerPage');
   }
 
-  goToDestination(){
+  goToDestination() {
     this.navCtrl.push(DestinationPage);
   }
 
-  
+
   lat: number = 39.7391;
   lng: number = -75.5398;
   markerLabel: String = "Test marker";
