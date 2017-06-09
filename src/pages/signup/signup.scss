@@ -11,7 +11,7 @@ page-signup {
     }
     ion-card.card {
         box-shadow: none;
-        background: rgba(0, 0, 0, 0.5);
+        background: rgba(0, 0, 0, 0.6);
         border-radius: 5px;
     }
     .list>.item-block .item-inner {
@@ -19,11 +19,20 @@ page-signup {
     }
     .item {
         margin-bottom: 5px;
-        background: rgba(255, 255, 255, 0.5);
+        background: rgba(0, 0, 0, 0.6);
+        border-radius: 5px;
         border: medium none;
-        .text-input,
-        {
+        .text-input {
             color: #fff;
+        }
+        *:-moz-placeholder {
+            color: #fff!important;
+        }
+        *:-ms-input-placeholder {
+            color: #fff!important;
+        }
+        *:-webkit-input-placeholder {
+            color: #fff!important;
         }
         input::-moz-placeholder {
             color: #fff!important;

@@ -6,45 +6,45 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>Donation Form</ion-title>
-  </ion-navbar>
+    <ion-navbar>
+        <ion-title>Donation Form</ion-title>
+    </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
-<p>Please enter your donation information below. </p>
+<ion-content padding class="background">
+    <p>Please enter your donation information below. </p>
 
-<ion-list>
+    <ion-list>
 
-  <ion-item>
-    <ion-label color="secondary">Name</ion-label>
-    <ion-input (ngModel)="name"></ion-input>
-  </ion-item>
+        <ion-item>
+            <ion-label color="secondary">Name</ion-label>
+            <ion-input (ngModel)="name"></ion-input>
+        </ion-item>
 
-   <ion-item>
-    <ion-label color="secondary">Organization</ion-label>
-    <ion-input (ngModel)="organization" ></ion-input>
-  </ion-item>
+        <ion-item>
+            <ion-label color="secondary">Organization</ion-label>
+            <ion-input (ngModel)="organization"></ion-input>
+        </ion-item>
 
-  <ion-item>
-    <ion-label color="secondary" fixed>Phone</ion-label>
-    <ion-input type="tel" (ngModel)="phone" ></ion-input>
-  </ion-item>
+        <ion-item>
+            <ion-label color="secondary" fixed>Phone</ion-label>
+            <ion-input type="tel" (ngModel)="phone"></ion-input>
+        </ion-item>
 
-  <ion-item>
-    <ion-label color="secondary" fixed>Email</ion-label>
-    <ion-input type="email" (ngModel)="email" ></ion-input>
-  </ion-item>
+        <ion-item>
+            <ion-label color="secondary" fixed>Email</ion-label>
+            <ion-input type="email" (ngModel)="email"></ion-input>
+        </ion-item>
 
-  <ion-item>
-    <ion-label color="secondary" stacked>Donation Description</ion-label>
-    <ion-textarea placeholder="ex. 2 boxes of corn, 3 trays of fruit" (ngModel)="donation"></ion-textarea>
-  </ion-item>
+        <ion-item>
+            <ion-label color="secondary" stacked>Donation Description</ion-label>
+            <ion-textarea placeholder="ex. 2 boxes of corn, 3 trays of fruit" (ngModel)="donation"></ion-textarea>
+        </ion-item>
 
-</ion-list>
+    </ion-list>
 
-<button ion-button round full color="secondary" (click)="submit()">Submit</button>
+    <button ion-button round full color="secondary" (click)="submit()">Submit</button>
 
 </ion-content>
