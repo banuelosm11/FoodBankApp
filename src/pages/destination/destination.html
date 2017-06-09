@@ -6,24 +6,21 @@
 -->
 <ion-header>
 
-  <ion-navbar>    
-    <ion-title>destination</ion-title>
+  <ion-navbar>
+    <ion-title>Destination</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content>
-
-<sebm-google-map [latitude]="lat" [longitude]="lng">
-  <sebm-google-map-marker [latitude]="lat" [longitude]="lng">
-  <sebm-google-map-info-window>
-    <strong><button (click)="goToThankYou()">
-        Hunger Relief Drop Off Location
-      </button></strong>
-  </sebm-google-map-info-window>
-  </sebm-google-map-marker>
-</sebm-google-map>
-
-<button ion-button round full color="secondary" (click)="goToThankYou()">I'm Done</button>
+  <ion-card>
+    <ion-card-header>
+      <button ion-button round full color="secondary" (click)="goToThankYou()">I'm Done</button>
+    </ion-card-header>
+    <ion-card-content>
+        <div #directionsPanel></div>
+    </ion-card-content>
+  </ion-card>
+<div #map id="map"></div>
 </ion-content>
