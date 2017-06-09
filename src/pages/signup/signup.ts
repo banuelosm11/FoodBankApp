@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import {VolunteerPage, DonatorPage} from '../pages';
-import {LandingPage} from '../pages';
+
 /**
  * Generated class for the SignupPage page.
  *
@@ -20,12 +19,6 @@ export class SignupPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SignupPage');
-  }
-  goToVolunteer(){
-    this.navCtrl.push(VolunteerPage);
-  }
-  login(){
-      this.navCtrl.push(LandingPage);
   }
 
 }
