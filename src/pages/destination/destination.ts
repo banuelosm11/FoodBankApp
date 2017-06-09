@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import{ DestinationService } from '../../app/services/destination.service'
+import { DestinationService } from '../../app/services/destination.service'
 
 /**
  * Generated class for the DestinationPage page.
@@ -14,23 +14,24 @@ import{ DestinationService } from '../../app/services/destination.service'
   templateUrl: 'destination.html',
   providers: [DestinationService]
 })
-export class DestinationPage implements OnInit { 
-  destinations:any;
+export class DestinationPage {
+  // destinations:any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private _destinationService:DestinationService) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private _destinationService: DestinationService) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad DestinationPage');
+    this._destinationService.getDestinations();
   }
 
-  ngOnInit(){
-		this._destinationService.getDestinations()
-			.subscribe(
-				(destinations) => this.destinations = destinations,
-				(err) => {console.log(err);
-				}
-			)
-  }
+  // ngOnInit(){
+	// 	this._destinationService.getDestinations()
+	// 		.subscribe(
+	// 			(destinations) => this.destinations = destinations,
+	// 			(err) => {console.log(err);
+	// 			}
+	// 		)
+  // }
 
 }
