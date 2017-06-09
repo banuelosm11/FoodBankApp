@@ -39,6 +39,26 @@
   </ion-item>
 
   <ion-item>
+    <ion-label color="secondary">Address</ion-label>
+    <ion-input (ngModel)="address" ></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label color="secondary">City</ion-label>
+    <ion-input (ngModel)="city" ></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label color="secondary">State</ion-label>
+    <ion-input (ngModel)="state" ></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label color="secondary">Zip Code</ion-label>
+    <ion-input (ngModel)="zipCode" ></ion-input>
+  </ion-item>
+
+  <ion-item>
     <ion-label color="secondary" stacked>Donation Description</ion-label>
     <ion-textarea placeholder="ex. 2 boxes of corn, 3 trays of fruit" (ngModel)="donation"></ion-textarea>
   </ion-item>
