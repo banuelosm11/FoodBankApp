@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { DestinationService } from '../../app/services/destination.service'
+import {VolThankYouPage } from '../pages';
 
 /**
  * Generated class for the DestinationPage page.
@@ -36,5 +37,12 @@ export class DestinationPage {
 	// 			}
 	// 		)
   // }
+
+  goToThankYou() {
+    this.navCtrl.push(VolThankYouPage);
+    }
+
+   lat: number = 39.7391;
+   lng: number = -75.5398;
 
 }
