@@ -44,4 +44,15 @@ $colors: ( primary: #488aff, secondary: #32db64, danger: #f53d3d, light: #f4f4f4
 //$text-color:	#FFE4C4;
 // $background-color:	#FFF8DC;
 $toolbar-background: #556B2F;
+<<<<<<< HEAD
 $colors: ( primary: #488aff, secondary: #32db64, danger: #f53d3d, light: #f4f4f4, dark: #222);
+=======
+
+$colors: (
+  primary:    #488aff,  
+  secondary:  #FF8C00,
+  danger:     #f53d3d,
+  light:      #f4f4f4,
+  dark:       #222
+);
+>>>>>>> fd1e32b94e07bb9b7eb7d023ce824679ff5456e8

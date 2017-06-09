@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
 import {LandingPage, SignupPage} from '../pages';
+import { AlertController } from 'ionic-angular';
 
 @Component({
   selector: 'page-home',
@@ -9,17 +10,47 @@ import {LandingPage, SignupPage} from '../pages';
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController) {
+  showLogin:boolean = true;
+  email:string = '';
+  password:string = '';
+  name:string = '';
 
-   
+  constructor(public navCtrl: NavController, public alertCtrl: AlertController) {}
+
+  doLogin() {
+
+      if(this.showLogin) {
+        console.log('process login');
+
+        if(this.email === '' || this.password === '') {
+          let alert = this.alertCtrl.create({
+           title: 'Missing username or password',
+           subTitle: 'First time user? Click Sign Up to create an account.',
+           buttons: ['OK']
+           });
+          alert.present();
+        }
+        //should connect to server or local jason
+        else if (this.email === 'whereisthefood' && this.password === '0000') {
+                  this.navCtrl.setRoot(LandingPage);
+        }
+        else {
+          let alert = this.alertCtrl.create({
+           title: 'Invalid username or password.',
+           subTitle: 'Please try again',
+           buttons: ['OK']
+          });
+          alert.present();
+        }
+
+    }
+
   }
-  
-   goToSignUp(){
+
+  doRegister(){
       this.navCtrl.push(SignupPage);
   }
 
-    login(){
-      this.navCtrl.push(LandingPage);
-  }
+
 
 }

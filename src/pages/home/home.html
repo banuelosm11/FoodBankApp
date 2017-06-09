@@ -6,9 +6,32 @@
     </ion-navbar>
 </ion-header>
 
+<<<<<<< HEAD
 <ion-content padding class="background">
 
     <button ion-button round color="secondary" (click)="login()"> Login</button>
     <p></p>
     <button ion-button round color="secondary" (click)="goToSignUp()"> Sign Up</button>
 </ion-content>
+=======
+<ion-content padding>
+  <p> Food Bank Delaware provides utritious foods to Delawareans in need and facilitate long-term solutions to the problems of hunger and poverty through community education and advocacy.
+
+
+  </p>
+
+  <div *ngIf="showLogin">
+    <ion-item>
+      <ion-input type="email" placeholder="Email" [(ngModel)]="email"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input type="password" placeholder="Password" [(ngModel)]="password"></ion-input>
+    </ion-item>
+  </div>
+
+  <button ion-button color="secondary" full (click)="doLogin()">Login</button>
+  <button ion-button color="secondary" full (click)="doRegister()">Sign UP</button>
+
+</ion-content>
+>>>>>>> fd1e32b94e07bb9b7eb7d023ce824679ff5456e8
