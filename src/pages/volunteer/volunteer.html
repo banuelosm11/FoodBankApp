@@ -6,6 +6,11 @@
 -->
 <ion-header>
 
+<<<<<<< HEAD
+    <ion-navbar>
+        <ion-title>volunteer</ion-title>
+    </ion-navbar>
+=======
   <ion-navbar>
     <ion-buttons End>
       <button (click)="logOut()" ion-button icon-only>
@@ -14,18 +19,19 @@
     </ion-buttons>
     <ion-title>volunteer</ion-title>
   </ion-navbar>
+>>>>>>> fd1e32b94e07bb9b7eb7d023ce824679ff5456e8
 
 </ion-header>
 
 
-<ion-content padding>
-<p> Volunteer Page </p>
+<ion-content padding class="background">
+    <p> Volunteer Page </p>
 
-<sebm-google-map [latitude]="lat" [longitude]="lng">
-  <sebm-google-map-marker [latitude]="lat" [longitude]="lng">
-  <sebm-google-map-info-window>
-    <strong>{{markerLabel}}</strong>
-  </sebm-google-map-info-window>
-  </sebm-google-map-marker>
-</sebm-google-map>
+    <sebm-google-map [latitude]="lat" [longitude]="lng">
+        <sebm-google-map-marker [latitude]="lat" [longitude]="lng">
+            <sebm-google-map-info-window>
+                <strong>{{markerLabel}}</strong>
+            </sebm-google-map-info-window>
+        </sebm-google-map-marker>
+    </sebm-google-map>
 </ion-content>
