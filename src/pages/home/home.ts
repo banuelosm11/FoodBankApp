@@ -31,7 +31,7 @@ export class HomePage {
           alert.present();
         }
         //should connect to server or local jason
-        else if (this.email === 'whereisthefood' && this.password === '0000') {
+        else if (this.email === '1' && this.password === '1') {
                   this.navCtrl.setRoot(LandingPage);
         }
         else {
