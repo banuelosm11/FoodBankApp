@@ -31,6 +31,16 @@ $colors: (
   dark:       #222
 );
 
+p {
+  text-align: center;
+  color: #556B2F;
+  font-family: 'Raleway',sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 25px;
+
+}
+
 
 // App iOS Variables
 // --------------------------------------------------
@@ -82,7 +92,7 @@ $background-color:	#FFF8DC;
 $toolbar-background: #556B2F;
 
 $colors: (
-  primary:    #488aff,  
+  primary:    #488aff,
   secondary:  #FF8C00,
   danger:     #f53d3d,
   light:      #f4f4f4,
