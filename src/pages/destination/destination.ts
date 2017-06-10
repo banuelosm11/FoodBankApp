@@ -43,7 +43,7 @@ export class DestinationPage {
 
             const mapOptions = {
                 center: latlng,
-                zoom: 15,
+                zoom: 13,
                 mapTypeId: google.maps.MapTypeId.ROADMAP,
                 streetViewControl: false
             };
