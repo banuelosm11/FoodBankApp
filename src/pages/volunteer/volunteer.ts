@@ -46,7 +46,10 @@ export class VolunteerPage {
 
             this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
 
-            let marker = new google.maps.Marker({})
+            let marker = new google.maps.Marker({
+              position: latlng,
+              map: this.map
+            })
 
         });
     }
