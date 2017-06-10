@@ -29,7 +29,6 @@ export class VolunteerPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad VolunteerPage');
     this.loadMap();
-    this.startNavigation();
   }
 
   loadMap() {
@@ -47,32 +46,6 @@ export class VolunteerPage {
             this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
 
             let marker = new google.maps.Marker({})
-
-        });
-    }
-
-    startNavigation() {
-
-        //change to ion native loction import because it asks the device to use its location
-        navigator.geolocation.getCurrentPosition(position => {
-
-        const directionsService = new google.maps.DirectionsService;
-        const directionsDisplay = new google.maps.DirectionsRenderer;
-
-        directionsDisplay.setMap(this.map);
-        directionsDisplay.setPanel(this.directionPanel.nativeElement);
-
-        directionsService.route({
-            origin: {lat: position.coords.latitude, lng: position.coords.longitude},
-            destination: {lat: 39.788278, lng: -75.545414},
-            travelMode: google.maps.TravelMode['DRIVING']
-        }, (res, status) => {
-            if (status === google.maps.DirectionsStatus.OK){
-                directionsDisplay.setDirections(res);
-            }else {
-                console.log("Error Loading Directions");
-            }
-        });
 
         });
     }
