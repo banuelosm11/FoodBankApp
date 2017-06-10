@@ -1,7 +1,16 @@
-page-volunteer {
+.ios, .md{
+  page-volunteer {
 
-.sebm-google-map-container {
-  height: 300px;
-}
+    #map {
+      width: 100%;
+      height: 100%;
+    }
 
+    ion-card{
+      max-height: 200px;
+      overflow: scroll;
+      position: absolute;
+      z-index: 1;
+    }
+  }
 }

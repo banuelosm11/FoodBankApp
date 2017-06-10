@@ -1,7 +1,7 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { DestinationService } from '../../app/services/destination.service'
-import {VolThankYouPage } from '../pages';
+import { VolThankYouPage } from '../pages';
 
 /**
  * Generated class for the DestinationPage page.
@@ -30,7 +30,7 @@ export class DestinationPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad DestinationPage');
     this.loadMap();
-    this.startNavigation();
+    this.startNavigation(39.7391, -75.5398);
     // this._destinationService.getDestinations().subscribe(data => {
 		// 		console.log(data);
 			// }
@@ -56,7 +56,7 @@ export class DestinationPage {
         });
     }
 
-    startNavigation() {
+    startNavigation(latitude: number, longitude: number) {
 
         //change to ion native loction import because it asks the device to use its location
         navigator.geolocation.getCurrentPosition(position => {
@@ -69,7 +69,7 @@ export class DestinationPage {
 
         directionsService.route({
             origin: {lat: position.coords.latitude, lng: position.coords.longitude},
-            destination: {lat: 39.788278, lng: -75.545414},
+            destination: {lat: latitude, lng: longitude},
             travelMode: google.maps.TravelMode['DRIVING']
         }, (res, status) => {
             if (status === google.maps.DirectionsStatus.OK){
