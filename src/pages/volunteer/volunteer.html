@@ -15,10 +15,19 @@
 
 <ion-content>
 
-<p> Volunteer Page </p>
+<p> Testing font style sadfdsfh  sdjfhdskjfhk jksadfhkjdshfj aksjhfsakjf </p>
 
-    <strong><button (click)="goToDestination()">
-        Volunteer Locations
-      </button></strong>
+  <ion-card>
+    <ion-card-header>
+      <button ion-button round full color="secondary" (click)="goToDestination()">Select this pickup</button>
+    </ion-card-header>
+    <ion-card-content>
+        <div #directionsPanel></div>
+    </ion-card-content>
+  </ion-card>
+<div #map id="map"></div>
+
+
+
 
 </ion-content>
