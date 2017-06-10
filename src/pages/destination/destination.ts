@@ -23,6 +23,7 @@ export class DestinationPage {
   @ViewChild('map') mapElement: ElementRef;
   @ViewChild('directionsPanel') directionPanel: ElementRef;
   map: any;
+  pickupDestination: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private _destinationService: DestinationService) {
   }
@@ -31,9 +32,6 @@ export class DestinationPage {
     console.log('ionViewDidLoad DestinationPage');
     this.loadMap();
     this.startNavigation(39.7391, -75.5398);
-    this._destinationService.getDestinations().subscribe(data => {{data.lat}{data.lng}{data.locationName}
-			}
-		);
   }
 
   loadMap() {
