@@ -30,6 +30,7 @@ export class DestinationPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad DestinationPage');
     this.loadMap();
+    this.startNavigation();
     // this._destinationService.getDestinations().subscribe(data => {
 		// 		console.log(data);
 			// }
@@ -38,7 +39,7 @@ export class DestinationPage {
 
   loadMap() {
        navigator.geolocation.getCurrentPosition(position => {
-            //destination locatoin 
+            //pickup location coordinates
             let latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 
             const mapOptions = {
@@ -66,6 +67,31 @@ export class DestinationPage {
                 infowindow.open(this.map, marker);
             });
             
+
+        });
+    }
+
+    startNavigation() {
+
+        navigator.geolocation.getCurrentPosition(position => {
+
+        const directionsService = new google.maps.DirectionsService;
+        const directionsDisplay = new google.maps.DirectionsRenderer;
+
+        directionsDisplay.setMap(this.map);
+        directionsDisplay.setPanel(this.directionPanel.nativeElement);
+
+        directionsService.route({
+            origin: {lat: position.coords.latitude, lng: position.coords.longitude},
+            destination: {lat: 39.788278, lng: -75.545414},
+            travelMode: google.maps.TravelMode['DRIVING']
+        }, (res, status) => {
+            if (status === google.maps.DirectionsStatus.OK){
+                directionsDisplay.setDirections(res);
+            }else {
+                console.log("Error Loading Directions");
+            }
+        });
 
         });
     }
