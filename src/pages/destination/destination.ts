@@ -38,7 +38,7 @@ export class DestinationPage {
   }
 
   loadMap() {
-        navigator.geolocation.getCurrentPosition(position => {
+       navigator.geolocation.getCurrentPosition(position => {
 
             let latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 
