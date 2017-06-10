@@ -30,20 +30,19 @@ export class DestinationPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad DestinationPage');
     this.loadMap();
-    this.startNavigation();
+    //this.startNavigation();
     // this._destinationService.getDestinations().subscribe(data => {
 		// 		console.log(data);
 			// }
 		// );
   }
 
-  loadMap() {
-       navigator.geolocation.getCurrentPosition(position => {
-            //pickup location coordinates
-            let latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+ // get pickup location, and map is made with that marker
 
+  loadMap() {
+     
             const mapOptions = {
-                center: latlng,
+                center: new google.maps.LatLng(39.743895, -75.568695),
                 zoom: 13,
                 mapTypeId: google.maps.MapTypeId.ROADMAP,
                 streetViewControl: false
@@ -51,38 +50,14 @@ export class DestinationPage {
 
             this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
 
-
-            let infowindow = new google.maps.InfoWindow({
-                content: "Destination"
-            });
-
-            let destinationLoc = {lat: 39.757203, lng: -75.563795};
-
-            let marker = new google.maps.Marker({
-                position: destinationLoc,
-                map: this.map,
-            });
-
-            marker.addListener ('click', function() {
-                infowindow.open(this.map, marker);
-            });
-            
-
-        });
-    }
-
-    startNavigation() {
-
-        navigator.geolocation.getCurrentPosition(position => {
-
-        const directionsService = new google.maps.DirectionsService;
+             const directionsService = new google.maps.DirectionsService;
         const directionsDisplay = new google.maps.DirectionsRenderer;
 
         directionsDisplay.setMap(this.map);
         directionsDisplay.setPanel(this.directionPanel.nativeElement);
 
         directionsService.route({
-            origin: {lat: position.coords.latitude, lng: position.coords.longitude},
+            origin: {lat: 39.743895, lng: -75.568695},
             destination: {lat: 39.788278, lng: -75.545414},
             travelMode: google.maps.TravelMode['DRIVING']
         }, (res, status) => {
@@ -92,9 +67,30 @@ export class DestinationPage {
                 console.log("Error Loading Directions");
             }
         });
-
-        });
+        
     }
+
+    // startNavigation() {
+
+    //     navigator.geolocation.getCurrentPosition(position => {
+
+       
+
+    //     });
+    // }
+
+            //  let infowindow = new google.maps.InfoWindow({
+            //     content: "Destination"
+            // });
+
+            // let marker = new google.maps.Marker({
+            //     position: {lat: 39.757203, lng: -75.563795},
+            //     map: this.map,
+            // });
+
+            // marker.addListener ('click', function() {
+            //     infowindow.open(this.map, marker);
+            // });
 
   // ngOnInit(){
 	// 	this._destinationService.getDestinations()
