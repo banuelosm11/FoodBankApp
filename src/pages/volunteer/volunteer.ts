@@ -51,8 +51,6 @@ export class VolunteerPage {
 
             let infoWindow = new google.maps.InfoWindow();
 
-            
-
             for(let i = 0, length = this.pickUpLocationsJSON.length; i < length; i++) {
               let data = this.pickUpLocationsJSON[i],
                   latLng = new google.maps.LatLng(data.lat, data.lng);
