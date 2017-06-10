@@ -1,5 +1,6 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { PickUpLocationService } from '../../app/services/pickUpLocation.service';
 declare var window: any;
 
 import { DestinationPage } from '../pages';
@@ -16,18 +17,21 @@ declare var google;
 @Component({
   selector: 'page-volunteer',
   templateUrl: 'volunteer.html',
+  providers: [PickUpLocationService]
 })
 export class VolunteerPage {
 
   @ViewChild('map') mapElement: ElementRef;
   @ViewChild('directionsPanel') directionPanel: ElementRef;
   map: any;
+  pickUpLocationsJSON: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private _pickUpLocation: PickUpLocationService) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad VolunteerPage');
+    this.pickUpLocationsJSON = this._pickUpLocation.getPickUpLocations();
     this.loadMap();
   }
 
@@ -45,7 +49,20 @@ export class VolunteerPage {
 
             this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
 
-            let marker = new google.maps.Marker({})
+            let infoWindow = new google.maps.InfoWindow();
+
+            
+
+            for(let i = 0, length = this.pickUpLocationsJSON.length; i < length; i++) {
+              let data = this.pickUpLocationsJSON[i],
+                  latLng = new google.maps.LatLng(data.lat, data.lng);
+
+              let marker = new google.maps.Marker({
+                position: latLng,
+                map: this.map,
+                locationName: data.locationName
+              });
+            }
 
         });
     }

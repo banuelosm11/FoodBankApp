@@ -31,10 +31,9 @@ export class DestinationPage {
     console.log('ionViewDidLoad DestinationPage');
     this.loadMap();
     this.startNavigation(39.7391, -75.5398);
-    // this._destinationService.getDestinations().subscribe(data => {
-		// 		console.log(data);
-			// }
-		// );
+    this._destinationService.getDestinations().subscribe(data => {{data.lat}{data.lng}{data.locationName}
+			}
+		);
   }
 
   loadMap() {
@@ -51,7 +50,9 @@ export class DestinationPage {
 
             this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
 
-            let marker = new google.maps.Marker({})
+            let marker = new google.maps.Marker({
+
+            })
 
         });
     }

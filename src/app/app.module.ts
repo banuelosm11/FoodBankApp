@@ -4,6 +4,7 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { DestinationService } from './services/destination.service';
+import { PickUpLocationService} from './services/pickUpLocation.service';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -43,6 +44,7 @@ import { HttpModule } from '@angular/http';
     StatusBar,
     SplashScreen,
     DestinationService,
+    PickUpLocationService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
