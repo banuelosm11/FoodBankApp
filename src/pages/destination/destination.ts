@@ -41,9 +41,7 @@ loadDirections() {
     navigator.geolocation.getCurrentPosition(position => {
 
             const directionsService = new google.maps.DirectionsService;
-            const directionsDisplay = new google.maps.DirectionsRenderer({
-                //suppressMarkers: true
-                });
+            const directionsDisplay = new google.maps.DirectionsRenderer;
      
             //pickup location lat long and marker needed
             const mapOptions = {
