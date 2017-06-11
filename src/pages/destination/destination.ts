@@ -36,7 +36,11 @@ export class DestinationPage {
 		// );
   }
 
-
+ //replace list 0 position.coords.latitude position.coords.longitude
+     //there should be a way to find neareest dropoff location
+     //json data
+     //speech monday and wednesday 
+     //fix click through, css for infowindows
 
 loadDirections() {
 
@@ -55,7 +59,7 @@ loadDirections() {
                     origin: new google.maps.Point(0,0),
                     anchor: new google.maps.Point(15, 15) 
                         },
-                 content: "Test",
+                 content: "Current Location",
                 }, 
 
                 {latlng: new google.maps.LatLng(40.1023, -75.2743),
@@ -65,7 +69,7 @@ loadDirections() {
                     origin: new google.maps.Point(0,0),
                     anchor: new google.maps.Point(15, 15) 
                         },
-                 content: "Test",
+                 content: "Pickup Location",
                 }, 
 
                 {latlng: new google.maps.LatLng(39.743895, -75.568695),
@@ -75,15 +79,9 @@ loadDirections() {
                     origin: new google.maps.Point(0,0),
                     anchor: new google.maps.Point(15, 15) 
                         },
-                 content: "Test",
+                 content: "Test"+'<button onclick= "goToThankYou()">Delivery complete</button>',
                 }
             ];
-
-             
-     //replace list 0 position.coords.latitude position.coords.longitude
-     //there should be a way to find neareest dropoff location
-     //speech monday and wednesday 
-     //fix click through, css for infowindows
 
             const mapOptions = {
                 center: list[0].latlng,
@@ -113,10 +111,9 @@ loadDirections() {
                     position: list[i].latlng,
                     map: this.map,
                     icon: list[i].image,
+                    content: list[i].content
                 });
                 
-                marker.content = "Test"+'<button onclick= "goToThankYou()">Delivery complete</button>'; 
-
                     google.maps.event.addListener(marker,'click', function() {
                     infowindow.setContent(this.content);    
                     infowindow.open(this.map, this);
