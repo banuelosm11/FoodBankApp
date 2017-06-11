@@ -21,6 +21,7 @@
     {
         "locationName": "Save-A-Lot",
         "lat": 39.743895,
-        "lng": -75.568695
+        "lng": -75.568695,
+        "description": "Test"
     }
 ]

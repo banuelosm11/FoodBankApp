@@ -55,14 +55,13 @@ export class VolunteerPage {
         let pickupLocationMarker = new google.maps.Marker({
           position: {lat: marker["lat"], lng: marker["lng"]},
           locationName: marker["locationName"],
+          content: marker["description"]
         });
 
-        (function(marker, markers) {
-          google.maps.event.addListener(marker, "click", function(e) {
-            infoWindow.setContent(marker["description"]);
-            infoWindow.open(this.map, marker);
+          google.maps.event.addListener(pickupLocationMarker, "click", function() {
+            infoWindow.setContent(this.content);
+            infoWindow.open(this.map, this);
           });
-        })(marker, markers);
 
         pickupLocationMarker.setMap(this.map);
       }
