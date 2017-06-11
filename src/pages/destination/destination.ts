@@ -43,7 +43,9 @@ loadDirections() {
    // navigator.geolocation.getCurrentPosition(position => {
 
             const directionsService = new google.maps.DirectionsService;
-            const directionsDisplay = new google.maps.DirectionsRenderer;
+            const directionsDisplay = new google.maps.DirectionsRenderer({
+                suppressMarkers: true
+            });
      
             const mapOptions = {
                 center: new google.maps.LatLng(40.2798, -75.2993),
@@ -53,7 +55,8 @@ loadDirections() {
             };
 
             this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
-
+////
+          //  let infowindow = new google.maps.InfoWindow();
             directionsDisplay.setMap(this.map);
                 
             //pickup location lat long and marker needed
@@ -69,67 +72,53 @@ loadDirections() {
                 travelMode: google.maps.TravelMode['DRIVING']
             }, (result, status) => {
                 if (status === google.maps.DirectionsStatus.OK){
+                    // let wind = this.createMarker(new google.maps.LatLng(40.2798, -75.2993));
+                    // this.createMarker(new google.maps.LatLng(39.743895, -75.568695));
+                    // this.createMarker(new google.maps.LatLng(40.1023, -75.2743));
+
+                    var infowindow = new google.maps.InfoWindow({
+                    content: "Testing"
+                     });
+
+                    var marker = new google.maps.Marker({
+                    position: new google.maps.LatLng(40.2798, -75.2993),
+                    map: this.map,
+                    title: 'Uluru (Ayers Rock)'
+                    });
+                    marker.addListener('click', function() {
+                    infowindow.open(this.map, marker);
+                    });
+                    
                     directionsDisplay.setDirections(result);
                 }else {
                     console.log("Error Loading Directions");
                 }
             });
             // });
-    }
+ }
 
-  
-   
-//     infowindow = new google.maps.InfoWindow();
-//     google.maps.event.addDomListener(document.getElementById('routebtn'), 'click', calcRoute);
+//   createMarker(latlng) {
+    
+//     var contentString = "This is just a test";
+//     var marker = new google.maps.Marker({
+//       position: latlng,
+//       map: this.map,
+//       zIndex: Math.round(latlng.lat() * -100000) << 5
+//     });
+
+//     google.maps.event.addListener(marker, 'click', function() {
+//       this.infowindow.setContent("Thisis just a test");
+//       this.infowindow.open(this.map, marker);
+//     });
 //   }
 
-
-//         // Display start and end markers for the route.
-//         let legs = result.routes[0].legs;
+// let legs = result.routes[0].legs;
 //         for (i = 0; i < legs.length; i++) {
 //           if (i == 0) {
 //             let startLocationlatlng = legs[i].start_location;
 //             let startLocationaddress = legs[i].start_address;
 //             // createMarker(legs[i].start_location, "start", legs[i].start_address, "green");
-//           }
-//           if (i != 0) {
-//             let waypointlatlng = legs[i].start_location;
-//             let waypointaddress = legs[i].start_address;
-//           }
-//           if (i == legs.length - 1) {
-//             let endLocationlatlng = legs[i].end_location;
-//             let endLocationaddress = legs[i].end_address;
-//           }
-//           var steps = legs[i].steps;
-//         }
-//         createMarker(this.endLocationlatlng, "end", "special text for end marker", "http://www.google.com/mapfiles/markerB.png")
-//         createMarker(this.startLocationlatlng, "start", "special text for start marker", "http://maps.gstatic.com/mapfiles/markers2/marker_greenA.png");
-        
-//         createMarker(this.waypointlatlng, "waypoint", "waypoint special text for waypoint marker", "http://www.google.com/mapfiles/marker_yellow.png");
-    
-//       } else {
-//         alert("Directions Request from " + start.toUrlValue(6) + " to " + end.toUrlValue(6) + " failed: " + status);
-//       }
-//     });
-//   }
-
-//   function createMarker(latlng, label, html, url) {
-//     var contentString = '<b>' + label + '</b><br>' + html;
-//     var marker = new google.maps.Marker({
-//       position: latlng,
-//       map: this.map,
-//       icon: url,
-//       title: label,
-//       zIndex: Math.round(latlng.lat() * -100000) << 5
-//     });
-
-//     google.maps.event.addListener(marker, 'click', function() {
-//       infowindow.setContent(contentString);
-//       infowindow.open(map, marker);
-//     });
-//   }
-//   google.maps.event.addDomListener(window, 'load', initialize);
-// }
+//           } 
 
   goToThankYou() {
     this.navCtrl.push(VolThankYouPage);
