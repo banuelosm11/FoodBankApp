@@ -38,7 +38,7 @@ export class DestinationPage {
 
   loadMap() {
        navigator.geolocation.getCurrentPosition(position => {
-            //destination locatoin 
+            //destination locatoin
             let latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 
             const mapOptions = {
@@ -65,7 +65,7 @@ export class DestinationPage {
             marker.addListener ('click', function() {
                 infowindow.open(this.map, marker);
             });
-            
+
 
         });
     }

@@ -1,6 +1,7 @@
-import { Component, ViewChild, ElementRef  } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-declare var window:any;
+import { PickUpLocationService } from '../../app/services/pickUpLocation.service';
+declare var window: any;
 
 import { DestinationPage } from '../pages';
 /**
@@ -16,26 +17,27 @@ declare var google;
 @Component({
   selector: 'page-volunteer',
   templateUrl: 'volunteer.html',
+  providers: [PickUpLocationService]
 })
 export class VolunteerPage {
 
   @ViewChild('map') mapElement: ElementRef;
-  @ViewChild('directionsPanel') directionPanel: ElementRef;
   map: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private _pickUpLocation: PickUpLocationService) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad VolunteerPage');
     this.loadMap();
-    
+    this._pickUpLocation.getPickUpLocations()
+        .subscribe(data => {
+        this.addMarkersToMap(data);
+    });
   }
 
   loadMap() {
-       navigator.geolocation.getCurrentPosition(position => {
-
-            let latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+            let latlng = new google.maps.LatLng(39.7391, -75.5398);
 
             const mapOptions = {
                 center: latlng,
@@ -45,33 +47,40 @@ export class VolunteerPage {
             };
 
             this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
+    }
 
-            let contentString = "Acme at Trolley"
-
-            let infowindow = new google.maps.InfoWindow({
-                content: contentString
-            });
-
-            let pickupLoc = {lat: 39.757203, lng: -75.563795};
-
-            let marker = new google.maps.Marker({
-                position: pickupLoc,
-                map: this.map,
-                title: "Acme at Trolley"
-            });
-
-            marker.addListener ('click', function() {
-                infowindow.open(this.map, marker);
-            });
+    addMarkersToMap(markers: Array<Object>) {
+      for(let marker of markers) {
+        console.log(marker["lat"], marker["lng"]);
+        console.log(marker["locationName"]);
+        let pickupLocationMarker = new google.maps.Marker({
+          position: {lat: marker["lat"], lng: marker["lng"]},
+          locationName: marker["locationName"],
         });
+        pickupLocationMarker.setMap(this.map);
+      }
+
+      // let contentString = "Acme at Trolley"
+      //
+      // let infowindow = new google.maps.InfoWindow({
+      //     content: contentString
+      // });
+      //
+      // let pickupLoc = {lat: 39.757203, lng: -75.563795};
+      //
+      // let marker = new google.maps.Marker({
+      //     position: pickupLoc,
+      //     map: this.map,
+      //     title: "Acme at Trolley"
+      // });
+      //
+      // marker.addListener ('click', function() {
+      //     infowindow.open(this.map, marker);
+      // });
     }
 
     goToDestination() {
     this.navCtrl.push(DestinationPage);
     }
-
-
-  lat: number = 39.7391;
-  lng: number = -75.5398;
 
 }
