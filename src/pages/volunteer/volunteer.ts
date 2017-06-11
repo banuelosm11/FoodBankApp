@@ -49,34 +49,34 @@ export class VolunteerPage {
             this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
     }
 
-    addMarkersToMap(markers) {
+    addMarkersToMap(markers: Array<Object>) {
       for(let marker of markers) {
-        let position = new google.maps.LatLng(marker["lat"], marker["lng"]);
-
+        console.log(marker["lat"], marker["lng"]);
+        console.log(marker["locationName"]);
         let pickupLocationMarker = new google.maps.Marker({
-          position: position,
+          position: {lat: marker["lat"], lng: marker["lng"]},
           locationName: marker["locationName"],
         });
         pickupLocationMarker.setMap(this.map);
       }
 
-      // let contentString = "Acme at Trolley"
-      //
-      // let infowindow = new google.maps.InfoWindow({
-      //     content: contentString
-      // });
-      //
-      // let pickupLoc = {lat: 39.757203, lng: -75.563795};
-      //
-      // let marker = new google.maps.Marker({
-      //     position: pickupLoc,
-      //     map: this.map,
-      //     title: "Acme at Trolley"
-      // });
-      //
-      // marker.addListener ('click', function() {
-      //     infowindow.open(this.map, marker);
-      // });
+      let contentString = "Acme at Trolley"
+
+      let infowindow = new google.maps.InfoWindow({
+          content: contentString
+      });
+
+      let pickupLoc = {lat: 39.757203, lng: -75.563795};
+
+      let marker = new google.maps.Marker({
+          position: pickupLoc,
+          map: this.map,
+          title: "Acme at Trolley"
+      });
+
+      marker.addListener ('click', function() {
+          infowindow.open(this.map, marker);
+      });
     }
 
     goToDestination() {
