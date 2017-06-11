@@ -37,7 +37,7 @@ export class VolunteerPage {
   }
 
   loadMap() {
-            let latlng = new google.maps.LatLng(34.2257, -77.9447);
+            let latlng = new google.maps.LatLng(39.7391, -75.5398);
 
             const mapOptions = {
                 center: latlng,
@@ -60,23 +60,23 @@ export class VolunteerPage {
         pickupLocationMarker.setMap(this.map);
       }
 
-      let contentString = "Acme at Trolley"
-
-      let infowindow = new google.maps.InfoWindow({
-          content: contentString
-      });
-
-      let pickupLoc = {lat: 39.757203, lng: -75.563795};
-
-      let marker = new google.maps.Marker({
-          position: pickupLoc,
-          map: this.map,
-          title: "Acme at Trolley"
-      });
-
-      marker.addListener ('click', function() {
-          infowindow.open(this.map, marker);
-      });
+      // let contentString = "Acme at Trolley"
+      //
+      // let infowindow = new google.maps.InfoWindow({
+      //     content: contentString
+      // });
+      //
+      // let pickupLoc = {lat: 39.757203, lng: -75.563795};
+      //
+      // let marker = new google.maps.Marker({
+      //     position: pickupLoc,
+      //     map: this.map,
+      //     title: "Acme at Trolley"
+      // });
+      //
+      // marker.addListener ('click', function() {
+      //     infowindow.open(this.map, marker);
+      // });
     }
 
     goToDestination() {
