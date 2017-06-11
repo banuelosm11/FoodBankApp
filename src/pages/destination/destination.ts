@@ -10,7 +10,7 @@ import {VolThankYouPage } from '../pages';
  * on Ionic pages and navigation.
  */
 
- declare var google;
+declare var google;
 
 @IonicPage()
 @Component({
@@ -29,20 +29,26 @@ export class DestinationPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad DestinationPage');
-    this.loadMap();
+    this.loadDirections();
     // this._destinationService.getDestinations().subscribe(data => {
 		// 		console.log(data);
 			// }
 		// );
   }
 
-  loadMap() {
-       navigator.geolocation.getCurrentPosition(position => {
-            //destination locatoin
-            let latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 
+
+loadDirections() {
+
+   // navigator.geolocation.getCurrentPosition(position => {
+
+            const directionsService = new google.maps.DirectionsService;
+            const directionsDisplay = new google.maps.DirectionsRenderer({
+                suppressMarkers: true
+            });
+     
             const mapOptions = {
-                center: latlng,
+                center: new google.maps.LatLng(40.2798, -75.2993),
                 zoom: 13,
                 mapTypeId: google.maps.MapTypeId.ROADMAP,
                 streetViewControl: false
@@ -50,34 +56,46 @@ export class DestinationPage {
 
             this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
 
+            directionsDisplay.setMap(this.map);
+                
+            //pickup location lat long and marker needed
+            let waypts = [];
+            waypts.push({location: new google.maps.LatLng(40.1023, -75.2743), stopover: true});
+            //directionsDisplay.setPanel(this.directionPanel.nativeElement);
 
-            let infowindow = new google.maps.InfoWindow({
-                content: "Destination"
+            //position.coords.latitude, lng: position.coords.longitude
+            directionsService.route({
+                origin: {lat: 40.2798, lng: -75.2993},
+                destination: {lat: 39.743895, lng: -75.568695},
+                waypoints: waypts,
+                travelMode: google.maps.TravelMode['DRIVING']
+            }, (result, status) => {
+                if (status === google.maps.DirectionsStatus.OK){
+                //let image = 'http://www.clker.com/cliparts/3/b/I/R/x/K/corn-cub-hi.png';
+                    let list: Object[] = [new google.maps.LatLng(40.2798, -75.2993), new google.maps.LatLng(40.1023, -75.2743), new google.maps.LatLng(39.743895, -75.568695)];
+                    var infowindow = new google.maps.InfoWindow();
+
+                for(let i =0; i<3; i++){
+                    var marker = new google.maps.Marker({
+                    position: list[i],
+                    map: this.map,
+                    //icon: image,
+                });
+                    marker.content = "Test";
+
+                    google.maps.event.addListener(marker,'click', function() {
+                    infowindow.setContent(this.content);    
+                    infowindow.open(this.map, this);
+                    });
+                }
+                
+                    directionsDisplay.setDirections(result);
+                }else {
+                    console.log("Error Loading Directions");
+                }
             });
-
-            let destinationLoc = {lat: 39.757203, lng: -75.563795};
-
-            let marker = new google.maps.Marker({
-                position: destinationLoc,
-                map: this.map,
-            });
-
-            marker.addListener ('click', function() {
-                infowindow.open(this.map, marker);
-            });
-
-
-        });
-    }
-
-  // ngOnInit(){
-	// 	this._destinationService.getDestinations()
-	// 		.subscribe(
-	// 			(destinations) => this.destinations = destinations,
-	// 			(err) => {console.log(err);
-	// 			}
-	// 		)
-  // }
+            // });
+ } 
 
   goToThankYou() {
     this.navCtrl.push(VolThankYouPage);
