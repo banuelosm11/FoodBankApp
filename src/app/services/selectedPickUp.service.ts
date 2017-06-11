@@ -3,12 +3,12 @@ import { Http } from '@angular/http';
 // import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 // import 'rxjs/add/operator/catch';
-import 'rxjs/add/operator/toPromise';
+//import 'rxjs/add/operator/toPromise';
 
-const URL_HUNGERRELIEFLOCATIONS = '../assets/data/hungerReliefLocations.json'
+const URL_SELECTEDPICKUP = '../assets/data/selectedPickup.json'
 
 @Injectable()
-export class DestinationService {
+export class SelectedPickUpService {
 	constructor(public _http: Http) {}
 
 	// getDestinations() {
@@ -17,9 +17,8 @@ export class DestinationService {
 	// 		.toPromise();
 	// }
 
-	getDestinations() {
-		return this._http.get(URL_HUNGERRELIEFLOCATIONS).map(res => res.json())
-		.toPromise();
+	getSelectedPickUp() {
+		return this._http.get(URL_SELECTEDPICKUP).map(res => res.json());
 			// .map((response:Response) => response.json())
 			// .catch(this._handlerError);
 	}

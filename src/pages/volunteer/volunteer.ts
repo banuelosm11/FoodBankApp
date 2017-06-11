@@ -51,8 +51,8 @@ export class VolunteerPage {
 
     addMarkersToMap(markers: Array<Object>) {
       for(let marker of markers) {
-        console.log(marker["lat"], marker["lng"]);
-        console.log(marker["locationName"]);
+        //console.log(marker["lat"], marker["lng"]);
+        //console.log(marker["locationName"]);
         let pickupLocationMarker = new google.maps.Marker({
           position: {lat: marker["lat"], lng: marker["lng"]},
           locationName: marker["locationName"],
@@ -60,23 +60,6 @@ export class VolunteerPage {
         pickupLocationMarker.setMap(this.map);
       }
 
-      // let contentString = "Acme at Trolley"
-      //
-      // let infowindow = new google.maps.InfoWindow({
-      //     content: contentString
-      // });
-      //
-      // let pickupLoc = {lat: 39.757203, lng: -75.563795};
-      //
-      // let marker = new google.maps.Marker({
-      //     position: pickupLoc,
-      //     map: this.map,
-      //     title: "Acme at Trolley"
-      // });
-      //
-      // marker.addListener ('click', function() {
-      //     infowindow.open(this.map, marker);
-      // });
     }
 
     goToDestination() {

@@ -1,7 +1,9 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { DestinationService } from '../../app/services/destination.service'
-import {VolThankYouPage } from '../pages';
+import { VolThankYouPage } from '../pages';
+import { SelectedPickUpService } from '../../app/services/selectedPickUp.service'
+
 
 /**
  * Generated class for the DestinationPage page.
@@ -16,31 +18,41 @@ declare var google;
 @Component({
   selector: 'page-destination',
   templateUrl: 'destination.html',
-  providers: [DestinationService]
+  providers: [DestinationService, SelectedPickUpService]
 })
 export class DestinationPage {
 
   @ViewChild('map') mapElement: ElementRef;
   @ViewChild('directionsPanel') directionPanel: ElementRef;
   map: any;
+  pickUpLocation: any = " testing";
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private _destinationService: DestinationService) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, 
+  private _destinationService: DestinationService, private _selectedPickUpService: SelectedPickUpService) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad DestinationPage');
+    
+    // this._destinationService.getDestinations()
+    //     .subscribe(data => {
+	// 	this.addMarkersToMap(data);
+    //     });
+    this._selectedPickUpService.getSelectedPickUp()
+        .subscribe(data=> 
+		{this.setPickupVar(data)});
+    console.log(this.pickUpLocation)
     this.loadDirections();
-    // this._destinationService.getDestinations().subscribe(data => {
-		// 		console.log(data);
-			// }
-		// );
   }
 
- //replace list 0 position.coords.latitude position.coords.longitude
-     //there should be a way to find neareest dropoff location
+setPickupVar(data: any){
+    this.pickUpLocation = data;
+}
+     //turn on geolocation and replace list 0 position.coords.latitude position.coords.longitude
+     //there should be a way to find nearest dropoff location
      //json data
      //speech monday and wednesday 
-     //fix click through, css for infowindows
+     //fix click through, css for infowindows fix icon view
 
 loadDirections() {
 
@@ -50,7 +62,7 @@ loadDirections() {
             const directionsDisplay = new google.maps.DirectionsRenderer({
                 suppressMarkers: true
             });
-
+//https://lh3.googleusercontent.com/5OM8W6oF0NdKd_8aEKlpSybDejudy-AFsxT6E3p_Acb9iLNCrdQXwhXwJhsNcVAJNhs=w300
             let list: any[] = [
                 {latlng: new google.maps.LatLng(40.2798, -75.2993),
                     image: {
@@ -62,14 +74,14 @@ loadDirections() {
                  content: "Current Location",
                 }, 
 
-                {latlng: new google.maps.LatLng(40.1023, -75.2743),
+                {latlng: new google.maps.LatLng(this.pickUpLocation[0].lat, this.pickUpLocation[0].lng),
                  image: {
                     url: 'http://www.clker.com/cliparts/3/b/I/R/x/K/corn-cub-hi.png',
                     scaledSize: new google.maps.Size(40, 40),
                     origin: new google.maps.Point(0,0),
                     anchor: new google.maps.Point(15, 15) 
                         },
-                 content: "Pickup Location",
+                 content: "Pickup Location" + this.pickUpLocation[0].locationName,
                 }, 
 
                 {latlng: new google.maps.LatLng(39.743895, -75.568695),
