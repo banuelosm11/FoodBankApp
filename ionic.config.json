@@ -1,5 +1,9 @@
 {
   "name": "foodBankApp",
+<<<<<<< HEAD
   "app_id": "e487b4f3",
+=======
+  "app_id": "f180853d",
+>>>>>>> 2ac929b78f19cc60f4e277efc6370ae3456cf1df
   "type": "ionic-angular"
 }
