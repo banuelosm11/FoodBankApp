@@ -46,9 +46,47 @@ loadDirections() {
             const directionsDisplay = new google.maps.DirectionsRenderer({
                 suppressMarkers: true
             });
-     
+
+            let list: any[] = [
+                {latlng: new google.maps.LatLng(40.2798, -75.2993),
+                    image: {
+                    url: 'http://www.freeiconspng.com/uploads/name-people-person-user-icon--icon-search-engine-1.png',
+                    scaledSize: new google.maps.Size(40, 40),
+                    origin: new google.maps.Point(0,0),
+                    anchor: new google.maps.Point(15, 15) 
+                        },
+                 content: "Test",
+                }, 
+
+                {latlng: new google.maps.LatLng(40.1023, -75.2743),
+                 image: {
+                    url: 'http://www.clker.com/cliparts/3/b/I/R/x/K/corn-cub-hi.png',
+                    scaledSize: new google.maps.Size(40, 40),
+                    origin: new google.maps.Point(0,0),
+                    anchor: new google.maps.Point(15, 15) 
+                        },
+                 content: "Test",
+                }, 
+
+                {latlng: new google.maps.LatLng(39.743895, -75.568695),
+                    image: {
+                    url: 'http://www.iconsdb.com/icons/preview/orange/house-xxl.png',
+                    scaledSize: new google.maps.Size(40, 40),
+                    origin: new google.maps.Point(0,0),
+                    anchor: new google.maps.Point(15, 15) 
+                        },
+                 content: "Test",
+                }
+            ];
+
+             
+     //replace list 0 position.coords.latitude position.coords.longitude
+     //there should be a way to find neareest dropoff location
+     //speech monday and wednesday 
+     //fix click through, css for infowindows
+
             const mapOptions = {
-                center: new google.maps.LatLng(40.2798, -75.2993),
+                center: list[0].latlng,
                 zoom: 13,
                 mapTypeId: google.maps.MapTypeId.ROADMAP,
                 streetViewControl: false
@@ -57,31 +95,27 @@ loadDirections() {
             this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
 
             directionsDisplay.setMap(this.map);
-                
-            //pickup location lat long and marker needed
-            let waypts = [];
-            waypts.push({location: new google.maps.LatLng(40.1023, -75.2743), stopover: true});
+
             //directionsDisplay.setPanel(this.directionPanel.nativeElement);
 
-            //position.coords.latitude, lng: position.coords.longitude
             directionsService.route({
-                origin: {lat: 40.2798, lng: -75.2993},
-                destination: {lat: 39.743895, lng: -75.568695},
-                waypoints: waypts,
+                origin: list[0].latlng,
+                destination: list[2].latlng,
+                waypoints: [{location: list[1].latlng, stopover: true}],
                 travelMode: google.maps.TravelMode['DRIVING']
             }, (result, status) => {
                 if (status === google.maps.DirectionsStatus.OK){
-                //let image = 'http://www.clker.com/cliparts/3/b/I/R/x/K/corn-cub-hi.png';
-                    let list: Object[] = [new google.maps.LatLng(40.2798, -75.2993), new google.maps.LatLng(40.1023, -75.2743), new google.maps.LatLng(39.743895, -75.568695)];
-                    var infowindow = new google.maps.InfoWindow();
+
+                var infowindow = new google.maps.InfoWindow();
 
                 for(let i =0; i<3; i++){
                     var marker = new google.maps.Marker({
-                    position: list[i],
+                    position: list[i].latlng,
                     map: this.map,
-                    //icon: image,
+                    icon: list[i].image,
                 });
-                    marker.content = "Test";
+                
+                marker.content = "Test"+'<button onclick= "goToThankYou()">Delivery complete</button>'; 
 
                     google.maps.event.addListener(marker,'click', function() {
                     infowindow.setContent(this.content);    
@@ -94,11 +128,13 @@ loadDirections() {
                     console.log("Error Loading Directions");
                 }
             });
-            // });
+            // });      
  } 
 
-  goToThankYou() {
-    this.navCtrl.push(VolThankYouPage);
-  }
+    goToThankYou(){
+        this.navCtrl.push(VolThankYouPage);
+    }
+ 
 
 }
+
