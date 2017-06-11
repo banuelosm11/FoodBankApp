@@ -50,13 +50,20 @@ export class VolunteerPage {
     }
 
     addMarkersToMap(markers: Array<Object>) {
+      let infoWindow = new google.maps.InfoWindow();
       for(let marker of markers) {
-        console.log(marker["lat"], marker["lng"]);
-        console.log(marker["locationName"]);
         let pickupLocationMarker = new google.maps.Marker({
           position: {lat: marker["lat"], lng: marker["lng"]},
           locationName: marker["locationName"],
         });
+
+        (function(marker, markers) {
+          google.maps.event.addListener(marker, "click", function(e) {
+            infoWindow.setContent(marker["description"]);
+            infoWindow.open(this.map, marker);
+          });
+        })(marker, markers);
+
         pickupLocationMarker.setMap(this.map);
       }
 
