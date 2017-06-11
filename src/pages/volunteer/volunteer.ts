@@ -1,5 +1,5 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 import { PickUpLocationService } from '../../app/services/pickUpLocation.service';
 declare var window: any;
 
@@ -24,7 +24,7 @@ export class VolunteerPage {
   @ViewChild('map') mapElement: ElementRef;
   map: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private _pickUpLocation: PickUpLocationService) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private _pickUpLocation: PickUpLocationService, public modalCtrl: ModalController) {
   }
 
   ionViewDidLoad() {
@@ -50,13 +50,25 @@ export class VolunteerPage {
     }
 
     addMarkersToMap(markers: Array<Object>) {
+      let infoWindow = new google.maps.InfoWindow();
+      let that = this;
       for(let marker of markers) {
-        console.log(marker["lat"], marker["lng"]);
-        console.log(marker["locationName"]);
         let pickupLocationMarker = new google.maps.Marker({
           position: {lat: marker["lat"], lng: marker["lng"]},
-          locationName: marker["locationName"],
+          locationName: marker["locationName"]
         });
+        (function(pickupLocationMarker, markers) {
+          google.maps.event.addListener(pickupLocationMarker, 'click', function(e) {
+            infoWindow.setContent(marker["locationName"] + "<br />" + marker["phoneNumber"]);
+            infoWindow.open(this.map, this);
+          });
+          google.maps.event.addListener(pickupLocationMarker, 'dblclick', function(e) {
+            let pageDetails = that.modalCtrl.create(DestinationPage, {});
+            pageDetails.present();
+
+          });
+        })(pickupLocationMarker, markers);
+
         pickupLocationMarker.setMap(this.map);
       }
 
@@ -77,10 +89,6 @@ export class VolunteerPage {
       // marker.addListener ('click', function() {
       //     infowindow.open(this.map, marker);
       // });
-    }
-
-    goToDestination() {
-    this.navCtrl.push(DestinationPage);
     }
 
 }
