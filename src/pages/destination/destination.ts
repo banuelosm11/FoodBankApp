@@ -35,24 +35,21 @@ export class DestinationPage {
   }
 
   loadMap() {
-       navigator.geolocation.getCurrentPosition(position => {
 
-            let latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+        let latlng = new google.maps.LatLng(34.2257, -77.9447);
 
-            const mapOptions = {
-                center: latlng,
-                zoom: 15,
-                mapTypeId: google.maps.MapTypeId.ROADMAP,
-                streetViewControl: false
-            };
+        const mapOptions = {
+            center: latlng,
+            zoom: 15,
+            mapTypeId: google.maps.MapTypeId.ROADMAP,
+            streetViewControl: false
+        };
 
-            this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
+        this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
 
-            let marker = new google.maps.Marker({
+        let marker = new google.maps.Marker({
 
-            })
-
-        });
+        })
     }
 
     startNavigation(latitude: number, longitude: number) {
