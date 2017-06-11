@@ -55,8 +55,7 @@ loadDirections() {
             };
 
             this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
-////
-          //  let infowindow = new google.maps.InfoWindow();
+
             directionsDisplay.setMap(this.map);
                 
             //pickup location lat long and marker needed
@@ -72,53 +71,31 @@ loadDirections() {
                 travelMode: google.maps.TravelMode['DRIVING']
             }, (result, status) => {
                 if (status === google.maps.DirectionsStatus.OK){
-                    // let wind = this.createMarker(new google.maps.LatLng(40.2798, -75.2993));
-                    // this.createMarker(new google.maps.LatLng(39.743895, -75.568695));
-                    // this.createMarker(new google.maps.LatLng(40.1023, -75.2743));
+                //let image = 'http://www.clker.com/cliparts/3/b/I/R/x/K/corn-cub-hi.png';
+                    let list: Object[] = [new google.maps.LatLng(40.2798, -75.2993), new google.maps.LatLng(40.1023, -75.2743), new google.maps.LatLng(39.743895, -75.568695)];
+                    var infowindow = new google.maps.InfoWindow();
 
-                    var infowindow = new google.maps.InfoWindow({
-                    content: "Testing"
-                     });
-
+                for(let i =0; i<3; i++){
                     var marker = new google.maps.Marker({
-                    position: new google.maps.LatLng(40.2798, -75.2993),
+                    position: list[i],
                     map: this.map,
-                    title: 'Uluru (Ayers Rock)'
+                    //icon: image,
+                });
+                    marker.content = "Test";
+
+                    google.maps.event.addListener(marker,'click', function() {
+                    infowindow.setContent(this.content);    
+                    infowindow.open(this.map, this);
                     });
-                    marker.addListener('click', function() {
-                    infowindow.open(this.map, marker);
-                    });
-                    
+                }
+                
                     directionsDisplay.setDirections(result);
                 }else {
                     console.log("Error Loading Directions");
                 }
             });
             // });
- }
-
-//   createMarker(latlng) {
-    
-//     var contentString = "This is just a test";
-//     var marker = new google.maps.Marker({
-//       position: latlng,
-//       map: this.map,
-//       zIndex: Math.round(latlng.lat() * -100000) << 5
-//     });
-
-//     google.maps.event.addListener(marker, 'click', function() {
-//       this.infowindow.setContent("Thisis just a test");
-//       this.infowindow.open(this.map, marker);
-//     });
-//   }
-
-// let legs = result.routes[0].legs;
-//         for (i = 0; i < legs.length; i++) {
-//           if (i == 0) {
-//             let startLocationlatlng = legs[i].start_location;
-//             let startLocationaddress = legs[i].start_address;
-//             // createMarker(legs[i].start_location, "start", legs[i].start_address, "green");
-//           } 
+ } 
 
   goToThankYou() {
     this.navCtrl.push(VolThankYouPage);
