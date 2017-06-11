@@ -10,7 +10,7 @@ import {VolThankYouPage } from '../pages';
  * on Ionic pages and navigation.
  */
 
- declare var google;
+declare var google;
 
 @IonicPage()
 @Component({
@@ -29,7 +29,7 @@ export class DestinationPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad DestinationPage');
-    this.loadMap();
+    this.loadPickupToDestination();
     //this.startNavigation();
     // this._destinationService.getDestinations().subscribe(data => {
 		// 		console.log(data);
@@ -37,10 +37,46 @@ export class DestinationPage {
 		// );
   }
 
- // get pickup location, and map is made with that marker
+loadCurrentLocationToPickup() {
 
-  loadMap() {
+    navigator.geolocation.getCurrentPosition(position => {
+
+            const directionsService = new google.maps.DirectionsService;
+            const directionsDisplay = new google.maps.DirectionsRenderer;
      
+            //pickup location lat long and marker needed
+            const mapOptions = {
+                center: new google.maps.LatLng(position.coords.latitude, position.coords.longitude),
+                zoom: 13,
+                mapTypeId: google.maps.MapTypeId.ROADMAP,
+                streetViewControl: false
+            };
+
+            this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
+
+            directionsDisplay.setMap(this.map);
+            //directionsDisplay.setPanel(this.directionPanel.nativeElement);
+
+            directionsService.route({
+                origin: {lat: position.coords.latitude, lng: position.coords.longitude},
+                destination: {lat: 39.743895, lng: -75.568695},
+                travelMode: google.maps.TravelMode['DRIVING']
+            }, (result, status) => {
+                if (status === google.maps.DirectionsStatus.OK){
+                    directionsDisplay.setDirections(result);
+                }else {
+                    console.log("Error Loading Directions");
+                }
+            });
+             });
+    }
+
+  loadPickupToDestination() {
+
+            const directionsService = new google.maps.DirectionsService;
+            const directionsDisplay = new google.maps.DirectionsRenderer;
+     
+            //pickup location lat long and marker needed
             const mapOptions = {
                 center: new google.maps.LatLng(39.743895, -75.568695),
                 zoom: 13,
@@ -50,34 +86,43 @@ export class DestinationPage {
 
             this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
 
-             const directionsService = new google.maps.DirectionsService;
-        const directionsDisplay = new google.maps.DirectionsRenderer;
+            directionsDisplay.setMap(this.map);
+            //directionsDisplay.setPanel(this.directionPanel.nativeElement);
 
-        directionsDisplay.setMap(this.map);
-        directionsDisplay.setPanel(this.directionPanel.nativeElement);
+            directionsService.route({
+                origin: {lat: 39.743895, lng: -75.568695},
+                destination: {lat: 39.788278, lng: -75.545414},
+                travelMode: google.maps.TravelMode['DRIVING']
+            }, (res, status) => {
+                if (status === google.maps.DirectionsStatus.OK){
+                    directionsDisplay.setDirections(res);
+                }else {
+                    console.log("Error Loading Directions");
+                }
 
-        directionsService.route({
-            origin: {lat: 39.743895, lng: -75.568695},
-            destination: {lat: 39.788278, lng: -75.545414},
-            travelMode: google.maps.TravelMode['DRIVING']
-        }, (res, status) => {
-            if (status === google.maps.DirectionsStatus.OK){
-                directionsDisplay.setDirections(res);
-            }else {
-                console.log("Error Loading Directions");
-            }
-        });
+            let infowindow = new google.maps.InfoWindow({
+                content: " ",
+            });
+
+            let marker = new google.maps.Marker({
+                position: res.route[0].leg[1],
+                map: this.map,
+            });
+
+            google.maps.event.addListener (marker, 'click', function() {
+infowindow.setContent('<p>Event Name: '+this.title+'</p>' +
+            '<p>Event Type: '+this.etype+'</p>' +
+            '<p>Cause: '+this.cause+'</p>' +
+            '<p>Date: '+this.date+'</p>' +
+                '<p>Time: '+this.time+'</p>' +
+                '<button onclick="goToThankYou()">Click me</button>');
+
+                infowindow.open(this.map, marker);
+            });
+
+            });
         
     }
-
-    // startNavigation() {
-
-    //     navigator.geolocation.getCurrentPosition(position => {
-
-       
-
-    //     });
-    // }
 
             //  let infowindow = new google.maps.InfoWindow({
             //     content: "Destination"
