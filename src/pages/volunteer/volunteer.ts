@@ -74,4 +74,8 @@ export class VolunteerPage {
 
     }
 
+    goToDestination(){
+    this.navCtrl.push(DestinationPage);
+  }
+
 }
