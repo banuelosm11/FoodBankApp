@@ -37,6 +37,7 @@ export class DestinationPage {
   }
 
 
+
 loadDirections() {
 
    // navigator.geolocation.getCurrentPosition(position => {
