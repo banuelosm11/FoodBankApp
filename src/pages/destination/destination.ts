@@ -1,5 +1,5 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
 import { DestinationService } from '../../app/services/destination.service'
 import { VolThankYouPage } from '../pages';
 import { SelectedPickUpService } from '../../app/services/selectedPickUp.service'
@@ -28,7 +28,8 @@ export class DestinationPage {
   pickUpLocation: any = " testing";
 
   constructor(public navCtrl: NavController, public navParams: NavParams, 
-  private _destinationService: DestinationService, private _selectedPickUpService: SelectedPickUpService) {
+  private _destinationService: DestinationService, private _selectedPickUpService: SelectedPickUpService, public viewCtrl: ViewController) {
+
   }
 
   ionViewDidLoad() {
@@ -62,6 +63,7 @@ loadDirections() {
             const directionsDisplay = new google.maps.DirectionsRenderer({
                 suppressMarkers: true
             });
+
 //https://lh3.googleusercontent.com/5OM8W6oF0NdKd_8aEKlpSybDejudy-AFsxT6E3p_Acb9iLNCrdQXwhXwJhsNcVAJNhs=w300
             let list: any[] = [
                 {latlng: new google.maps.LatLng(40.2798, -75.2993),
@@ -95,6 +97,7 @@ loadDirections() {
                 }
             ];
 
+
             const mapOptions = {
                 center: list[0].latlng,
                 zoom: 13,
@@ -127,23 +130,24 @@ loadDirections() {
                 });
                 
                     google.maps.event.addListener(marker,'click', function() {
-                    infowindow.setContent(this.content);    
+                    infowindow.setContent(this.content);
                     infowindow.open(this.map, this);
                     });
                 }
-                
+
                     directionsDisplay.setDirections(result);
                 }else {
                     console.log("Error Loading Directions");
                 }
             });
-            // });      
- } 
 
-    goToThankYou(){
-        this.navCtrl.push(VolThankYouPage);
-    }
- 
+            // });
+ }
+
+  goToThankYou() {
+    this.navCtrl.push(VolThankYouPage);
+    this.viewCtrl.dismiss();
+  }
 
 }
 
