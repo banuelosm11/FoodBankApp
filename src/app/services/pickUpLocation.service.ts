@@ -19,7 +19,8 @@ export class PickUpLocationService {
 	// }
 
 	getPickUpLocations() {
-		return this._http.get(URL_FOODPICKUPLOCATIONS).map(res => res.json())
+		return this._http.get(URL_FOODPICKUPLOCATIONS)
+						.map(res => res.json());
 			// .map((response:Response) => response.json())
 			// .catch(this._handlerError);
 	}
