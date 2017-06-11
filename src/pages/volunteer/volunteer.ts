@@ -55,7 +55,8 @@ export class VolunteerPage {
       for(let marker of markers) {
         let pickupLocationMarker = new google.maps.Marker({
           position: {lat: marker["lat"], lng: marker["lng"]},
-          locationName: marker["locationName"]
+          locationName: marker["locationName"],
+          animation: google.maps.Animation.DROP
         });
         (function(pickupLocationMarker, markers) {
           google.maps.event.addListener(pickupLocationMarker, 'click', function(e) {
