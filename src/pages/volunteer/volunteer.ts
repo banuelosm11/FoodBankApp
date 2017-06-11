@@ -55,11 +55,11 @@ export class VolunteerPage {
 
     addMarkersToMap(markers) {
       for(let marker of markers) {
-        let position = new google.maps.LatLng(marker.lat, marker.lng);
+        let position = new google.maps.LatLng(marker["lat"], marker["lng"]);
 
         let pickupLocationMarker = new google.maps.Marker({
           position: position,
-          locationName: marker.locationName,
+          locationName: marker["locationName"],
         });
         pickupLocationMarker.setMap(this.map);
       }
