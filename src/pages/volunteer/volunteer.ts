@@ -65,7 +65,6 @@ export class VolunteerPage {
           google.maps.event.addListener(pickupLocationMarker, 'dblclick', function(e) {
             let pageDetails = that.modalCtrl.create(DestinationPage, {});
             pageDetails.present();
-
           });
         })(pickupLocationMarker, markers);
 
