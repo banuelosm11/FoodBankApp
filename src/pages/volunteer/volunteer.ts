@@ -37,11 +37,11 @@ export class VolunteerPage {
   }
 
   loadMap() {
-            let latlng = new google.maps.LatLng(39.7391, -75.5398);
+            let latlng = new google.maps.LatLng(39.757203, -75.563795);
 
             const mapOptions = {
                 center: latlng,
-                zoom: 13,
+                zoom: 12,
                 mapTypeId: google.maps.MapTypeId.ROADMAP,
                 streetViewControl: false
             };

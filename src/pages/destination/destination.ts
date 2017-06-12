@@ -77,16 +77,17 @@ loadDirections(pickUpDropOff:any) {
                  +pickUpDropOff[0].state+" "+pickUpDropOff[0].zipCode+ "<br>"+pickUpDropOff[0].donation,
                 }, 
 
+
                 {latlng: new google.maps.LatLng(39.743895, -75.568695),
                     image: {
-                    url: 'http://www.iconsdb.com/icons/preview/orange/house-xxl.png',
+                    url: 'https://www.loudounhunger.org/wp-content/uploads/2016/09/Green_Food_Bank.png',
                     scaledSize: new google.maps.Size(40, 40),
                     origin: new google.maps.Point(0,0),
                     anchor: new google.maps.Point(15, 15) 
                         },
                  content: "Dropoff: " + "<br>" + pickUpDropOff[1].locationName + "<br>Contact: "+pickUpDropOff[1].phone+ "<br>"
                  +pickUpDropOff[1].address+ "<br>"+pickUpDropOff[1].city+ ", "+pickUpDropOff[1].state+" "+pickUpDropOff[1].zipCode
-                 + "<br>"+'<button (click)= "goToThankYou()">Delivery complete</button>',
+                 + "<br>"+'<button ng-click= "goToThankYou()">Delivery complete</button>',
                 }
             ];
 
