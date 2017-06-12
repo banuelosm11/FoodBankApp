@@ -2,7 +2,12 @@
     {
         "locationName":"Choice Pantry",
         "lat":39.764780,
-        "lng":-75.540354
+        "lng":-75.540354,
+        "phone": "(302)654-8886",
+        "address": "2809 Baynard Blvd",
+        "city":"Wilmington",
+        "state":"DE",
+        "zipCode": "19802"
     },
 
     {
@@ -26,6 +31,12 @@
     {
         "locationName":"SALVATION ARMY FOOD CLOSET",
         "lat":39.741180,
-        "lng":-75.552092
+        "lng":-75.552092,
+        "phone": "(302)472-0750",
+        "address": "400 North Orange Street",
+        "city":"Wilmington",
+        "state":"DE",
+        "zipCode": "19801"
     }
 ]
+ 

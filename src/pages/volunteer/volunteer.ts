@@ -72,23 +72,10 @@ export class VolunteerPage {
         pickupLocationMarker.setMap(this.map);
       }
 
-      // let contentString = "Acme at Trolley"
-      //
-      // let infowindow = new google.maps.InfoWindow({
-      //     content: contentString
-      // });
-      //
-      // let pickupLoc = {lat: 39.757203, lng: -75.563795};
-      //
-      // let marker = new google.maps.Marker({
-      //     position: pickupLoc,
-      //     map: this.map,
-      //     title: "Acme at Trolley"
-      // });
-      //
-      // marker.addListener ('click', function() {
-      //     infowindow.open(this.map, marker);
-      // });
     }
+
+    goToDestination(){
+    this.navCtrl.push(DestinationPage);
+  }
 
 }
