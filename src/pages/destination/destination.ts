@@ -25,37 +25,26 @@ export class DestinationPage {
   @ViewChild('map') mapElement: ElementRef;
   @ViewChild('directionsPanel') directionPanel: ElementRef;
   map: any;
-  pickUpLocation: any = " testing";
 
   constructor(public navCtrl: NavController, public navParams: NavParams, 
-  private _destinationService: DestinationService, private _selectedPickUpService: SelectedPickUpService, public viewCtrl: ViewController) {
-
+  private _destinationService: DestinationService, private _selectedPickUpService: SelectedPickUpService, 
+  public viewCtrl: ViewController) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad DestinationPage');
-    
     // this._destinationService.getDestinations()
-    //     .subscribe(data => {
-	// 	this.addMarkersToMap(data);
-    //     });
+    //     .subscribe(data => {});
     this._selectedPickUpService.getSelectedPickUp()
         .subscribe(data=> 
-		{this.setPickupVar(data)});
-    console.log(this.pickUpLocation)
-    this.loadDirections();
+		{this.loadDirections(data)});
   }
 
-setPickupVar(data: any){
-    this.pickUpLocation = data;
-}
      //turn on geolocation and replace list 0 position.coords.latitude position.coords.longitude
-     //there should be a way to find nearest dropoff location
-     //json data
-     //speech monday and wednesday 
-     //fix click through, css for infowindows fix icon view
+     //there should be a way to find nearest dropoff location, using all json data for destination 
+     //fix click through, css for infowindows
 
-loadDirections() {
+loadDirections(pickUpDropOff:any) {
 
    // navigator.geolocation.getCurrentPosition(position => {
 
@@ -64,26 +53,28 @@ loadDirections() {
                 suppressMarkers: true
             });
 
-//https://lh3.googleusercontent.com/5OM8W6oF0NdKd_8aEKlpSybDejudy-AFsxT6E3p_Acb9iLNCrdQXwhXwJhsNcVAJNhs=w300
+    //https://lh3.googleusercontent.com/5OM8W6oF0NdKd_8aEKlpSybDejudy-AFsxT6E3p_Acb9iLNCrdQXwhXwJhsNcVAJNhs=w300
             let list: any[] = [
-                {latlng: new google.maps.LatLng(40.2798, -75.2993),
+                {latlng: new google.maps.LatLng(39.7708, -75.5597),
                     image: {
                     url: 'http://www.freeiconspng.com/uploads/name-people-person-user-icon--icon-search-engine-1.png',
-                    scaledSize: new google.maps.Size(40, 40),
+                    scaledSize: new google.maps.Size(30, 30),
                     origin: new google.maps.Point(0,0),
                     anchor: new google.maps.Point(15, 15) 
                         },
                  content: "Current Location",
                 }, 
 
-                {latlng: new google.maps.LatLng(this.pickUpLocation[0].lat, this.pickUpLocation[0].lng),
+                {latlng: new google.maps.LatLng(pickUpDropOff[0].lat, pickUpDropOff[0].lng),
                  image: {
                     url: 'http://www.clker.com/cliparts/3/b/I/R/x/K/corn-cub-hi.png',
                     scaledSize: new google.maps.Size(40, 40),
                     origin: new google.maps.Point(0,0),
                     anchor: new google.maps.Point(15, 15) 
                         },
-                 content: "Pickup Location" + this.pickUpLocation[0].locationName,
+                 content: "Pickup: " + "<br>" + pickUpDropOff[0].locationName + "<br>Contact: "+pickUpDropOff[0].name
+                 + ", "+pickUpDropOff[0].phone+ "<br>"+pickUpDropOff[0].address+ "<br>"+pickUpDropOff[0].city+ ", "
+                 +pickUpDropOff[0].state+" "+pickUpDropOff[0].zipCode+ "<br>"+pickUpDropOff[0].donation,
                 }, 
 
                 {latlng: new google.maps.LatLng(39.743895, -75.568695),
@@ -93,7 +84,9 @@ loadDirections() {
                     origin: new google.maps.Point(0,0),
                     anchor: new google.maps.Point(15, 15) 
                         },
-                 content: "Test"+'<button onclick= "goToThankYou()">Delivery complete</button>',
+                 content: "Dropoff: " + "<br>" + pickUpDropOff[1].locationName + "<br>Contact: "+pickUpDropOff[1].phone+ "<br>"
+                 +pickUpDropOff[1].address+ "<br>"+pickUpDropOff[1].city+ ", "+pickUpDropOff[1].state+" "+pickUpDropOff[1].zipCode
+                 + "<br>"+'<button onclick= "goToThankYou()">Delivery complete</button>',
                 }
             ];
 
@@ -109,7 +102,7 @@ loadDirections() {
 
             directionsDisplay.setMap(this.map);
 
-            //directionsDisplay.setPanel(this.directionPanel.nativeElement);
+            directionsDisplay.setPanel(this.directionPanel.nativeElement);
 
             directionsService.route({
                 origin: list[0].latlng,

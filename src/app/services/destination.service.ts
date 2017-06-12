@@ -18,8 +18,7 @@ export class DestinationService {
 	// }
 
 	getDestinations() {
-		return this._http.get(URL_HUNGERRELIEFLOCATIONS).map(res => res.json())
-		.toPromise();
+		return this._http.get(URL_HUNGERRELIEFLOCATIONS).map(res => res.json());
 			// .map((response:Response) => response.json())
 			// .catch(this._handlerError);
 	}
