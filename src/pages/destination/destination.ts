@@ -143,5 +143,9 @@ loadDirections(pickUpDropOff:any) {
     this.viewCtrl.dismiss();
   }
 
+   cancel() {
+    this.viewCtrl.dismiss();
+  }
+
 }
 
