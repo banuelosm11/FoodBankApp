@@ -87,7 +87,7 @@ loadDirections(pickUpDropOff:any) {
                         },
                  content: "Dropoff: " + "<br>" + pickUpDropOff[1].locationName + "<br>Contact: "+pickUpDropOff[1].phone+ "<br>"
                  +pickUpDropOff[1].address+ "<br>"+pickUpDropOff[1].city+ ", "+pickUpDropOff[1].state+" "+pickUpDropOff[1].zipCode
-                 + "<br>"+'<button ng-click= "goToThankYou()">Delivery complete</button>',
+                 + "<br>"+'<button onclick= "goToThankYou()">Delivery complete</button>',
                 }
             ];
 
