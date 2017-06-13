@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, AlertController, NavParams } from 'ionic-angular';
 import{Donation} from './donation';
 import {Http, Headers, RequestOptions} from '@angular/http';
 import { Injectable } from '@angular/core';
@@ -32,7 +32,7 @@ donation: Donation;
 
 
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public _http: Http) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public _http: Http, public alertCtrl: AlertController) {
   }
 
   ionViewDidLoad() {
@@ -40,9 +40,29 @@ donation: Donation;
   }
 
   submit(){
+if (  this.name === ""
+      || this.organization === ""
+      || this.email === ""
+      || this.phone === ""
+      || this.address === ""
+      || this.city === ""
+      || this.state === ""
+      || this.zipCode === ""
+      || this.donationDescription === ""
+    ){
+     let alert = this.alertCtrl.create({
+        title: 'Missing Information', 
+        subTitle: 'Please fill out all fields before submit.', 
+        buttons: ['OK']
+      });
+      alert.present();
+   }
+   else {
+
     this.createDonation();
     this.postDonation();
     this.navCtrl.push(DonateThankYouPage);
+  }
   }
 
   createDonation(){

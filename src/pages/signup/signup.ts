@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, AlertController, NavParams } from 'ionic-angular';
 import {LandingPage, DonatorPage} from '../pages';
 
 /**
@@ -15,15 +15,45 @@ import {LandingPage, DonatorPage} from '../pages';
 })
 export class SignupPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  name:string = "";
+ password:string = "";
+ email:string = "";
+ phone:string = "";
+ address:string = "";
+ city:string = "";
+ state:string = "";
+ zipCode:string = "";
+
+  constructor(public navCtrl: NavController, public alertCtrl: AlertController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SignupPage');
   }
 
+
   goToLanding(){
+    
+  if (  this.name === ""
+      || this.password === ""
+      || this.email === ""
+      || this.phone === ""
+      || this.address === ""
+      || this.city === ""
+      || this.state === ""
+      || this.zipCode === ""
+    ){
+      let alert = this.alertCtrl.create({
+        title: 'Missing Information', 
+        subTitle: 'Please fill out all fields before submit.', 
+        buttons: ['OK']
+      });
+      alert.present();
+   }
+   else {    
     this.navCtrl.push(LandingPage);
   }
+
+}
 
 }
