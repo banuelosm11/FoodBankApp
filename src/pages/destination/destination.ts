@@ -46,7 +46,7 @@ export class DestinationPage {
 
 loadDirections(pickUpDropOff:any) {
 
-   // navigator.geolocation.getCurrentPosition(position => {
+   navigator.geolocation.getCurrentPosition(position => {
 
             const directionsService = new google.maps.DirectionsService;
             const directionsDisplay = new google.maps.DirectionsRenderer({
@@ -55,7 +55,7 @@ loadDirections(pickUpDropOff:any) {
 
     //https://lh3.googleusercontent.com/5OM8W6oF0NdKd_8aEKlpSybDejudy-AFsxT6E3p_Acb9iLNCrdQXwhXwJhsNcVAJNhs=w300
             let list: any[] = [
-                {latlng: new google.maps.LatLng(39.7708, -75.5597),
+                {latlng: new google.maps.LatLng(position.coords.latitude, position.coords.longitude),
                     image: {
                     url: 'http://www.freeiconspng.com/uploads/name-people-person-user-icon--icon-search-engine-1.png',
                     scaledSize: new google.maps.Size(30, 30),
@@ -87,7 +87,7 @@ loadDirections(pickUpDropOff:any) {
                         },
                  content: "Dropoff: " + "<br>" + pickUpDropOff[1].locationName + "<br>Contact: "+pickUpDropOff[1].phone+ "<br>"
                  +pickUpDropOff[1].address+ "<br>"+pickUpDropOff[1].city+ ", "+pickUpDropOff[1].state+" "+pickUpDropOff[1].zipCode
-                 + "<br>"+'<button onclick= "goToThankYou()">Delivery complete</button>',
+                 /*+ "<br>"+'<button onclick= "goToThankYou()">Delivery complete</button>'*/,
                 }
             ];
 
@@ -135,7 +135,7 @@ loadDirections(pickUpDropOff:any) {
                 }
             });
 
-            // });
+            });
  }
 
   goToThankYou() {

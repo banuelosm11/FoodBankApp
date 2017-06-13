@@ -27,7 +27,7 @@ export class DonateThankYouPage {
   }
 
   goToLanding(){
-    this.navCtrl.push(LandingPage);
+    this.navCtrl.setRoot(LandingPage);
   }
 
   logOut(){

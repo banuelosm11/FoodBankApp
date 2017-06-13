@@ -58,7 +58,7 @@ export class VolThankYouPage {
   }
 
   goToLanding(){
-    this.navCtrl.push(LandingPage);
+    this.navCtrl.setRoot(LandingPage);
   }
 
 }
