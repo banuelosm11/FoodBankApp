@@ -26,8 +26,8 @@ export class DestinationPage {
   @ViewChild('directionsPanel') directionPanel: ElementRef;
   map: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, 
-  private _destinationService: DestinationService, private _selectedPickUpService: SelectedPickUpService, 
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+  private _destinationService: DestinationService, private _selectedPickUpService: SelectedPickUpService,
   public viewCtrl: ViewController) {
   }
 
@@ -36,12 +36,12 @@ export class DestinationPage {
     // this._destinationService.getDestinations()
     //     .subscribe(data => {});
     this._selectedPickUpService.getSelectedPickUp()
-        .subscribe(data=> 
+        .subscribe(data=>
 		{this.loadDirections(data)});
   }
 
      //turn on geolocation and replace list 0 position.coords.latitude position.coords.longitude
-     //there should be a way to find nearest dropoff location, using all json data for destination 
+     //there should be a way to find nearest dropoff location, using all json data for destination
      //fix click through, css for infowindows
 
 loadDirections(pickUpDropOff:any) {
@@ -60,29 +60,29 @@ loadDirections(pickUpDropOff:any) {
                     url: 'http://www.freeiconspng.com/uploads/name-people-person-user-icon--icon-search-engine-1.png',
                     scaledSize: new google.maps.Size(30, 30),
                     origin: new google.maps.Point(0,0),
-                    anchor: new google.maps.Point(15, 15) 
+                    anchor: new google.maps.Point(15, 15)
                         },
                  content: "Current Location",
-                }, 
+                },
 
                 {latlng: new google.maps.LatLng(pickUpDropOff[0].lat, pickUpDropOff[0].lng),
                  image: {
                     url: 'http://www.clker.com/cliparts/3/b/I/R/x/K/corn-cub-hi.png',
                     scaledSize: new google.maps.Size(40, 40),
                     origin: new google.maps.Point(0,0),
-                    anchor: new google.maps.Point(15, 15) 
+                    anchor: new google.maps.Point(15, 15)
                         },
                  content: "Pickup: " + "<br>" + pickUpDropOff[0].locationName + "<br>Contact: "+pickUpDropOff[0].name
                  + ", "+pickUpDropOff[0].phone+ "<br>"+pickUpDropOff[0].address+ "<br>"+pickUpDropOff[0].city+ ", "
                  +pickUpDropOff[0].state+" "+pickUpDropOff[0].zipCode+ "<br>"+pickUpDropOff[0].donation,
-                }, 
+                },
 
                 {latlng: new google.maps.LatLng(39.743895, -75.568695),
                     image: {
                     url: 'http://www.iconsdb.com/icons/preview/orange/house-xxl.png',
                     scaledSize: new google.maps.Size(40, 40),
                     origin: new google.maps.Point(0,0),
-                    anchor: new google.maps.Point(15, 15) 
+                    anchor: new google.maps.Point(15, 15)
                         },
                  content: "Dropoff: " + "<br>" + pickUpDropOff[1].locationName + "<br>Contact: "+pickUpDropOff[1].phone+ "<br>"
                  +pickUpDropOff[1].address+ "<br>"+pickUpDropOff[1].city+ ", "+pickUpDropOff[1].state+" "+pickUpDropOff[1].zipCode
@@ -121,7 +121,7 @@ loadDirections(pickUpDropOff:any) {
                     icon: list[i].image,
                     content: list[i].content
                 });
-                
+
                     google.maps.event.addListener(marker,'click', function() {
                     infowindow.setContent(this.content);
                     infowindow.open(this.map, this);
@@ -142,5 +142,8 @@ loadDirections(pickUpDropOff:any) {
     this.viewCtrl.dismiss();
   }
 
-}
+  dismissPage() {
+    this.viewCtrl.dismiss();
+  }
 
+}
