@@ -61,7 +61,7 @@ if (  this.name === ""
 
     this.createDonation();
     this.postDonation();
-    this.navCtrl.push(DonateThankYouPage);
+    this.navCtrl.setRoot(DonateThankYouPage);
   }
   }
 
