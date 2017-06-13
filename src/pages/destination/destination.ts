@@ -139,7 +139,7 @@ loadDirections(pickUpDropOff:any) {
  }
 
   goToThankYou() {
-    this.navCtrl.setRoot(VolThankYouPage);
+    this.navCtrl.push(VolThankYouPage);
     this.viewCtrl.dismiss();
   }
 
